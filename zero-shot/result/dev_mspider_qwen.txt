@@ -1,0 +1,954 @@
+SELECT architect.name FROM architect JOIN bridge ON architect.id = bridge.architect_id WHERE bridge.length_meters > 500;
+SELECT architect.gender FROM architect JOIN bridge ON architect.id = bridge.architect_id WHERE bridge.name = '厄尔格特大桥';
+SELECT architect.name FROM architect JOIN bridge ON architect.id = bridge.architect_id WHERE bridge.length_feet > 5000;
+SELECT architect.name FROM architect WHERE architect.id IN (SELECT bridge.architect_id FROM bridge WHERE bridge.length_feet > 5000) INTERSECT SELECT architect.name FROM architect WHERE architect.id IN (SELECT mill.architect_id FROM mill WHERE mill.built_year < 1800);
+SELECT architect.name FROM architect JOIN mill ON architect.id = mill.architect_id WHERE mill.type = 'Salhin kürde';
+SELECT architect.name FROM architect JOIN mill ON architect.id = mill.architect_id WHERE mill.type = 'Watermill' LIMIT 1;
+SELECT architect.name FROM architect JOIN mill ON architect.id = mill.architect_id WHERE mill.location = 'Chicago' LIMIT 1;
+SELECT architect.name FROM architect JOIN mill ON architect.id = mill.architect_id WHERE mill.built_year > 1800 LIMIT 1;
+SELECT architect.name FROM architect JOIN bridge ON architect.id = bridge.architect_id WHERE bridge.length_meters > 1000;
+SELECT architect.name FROM architect JOIN mill ON architect.id = mill.architect_id WHERE mill.type = '水电站' LIMIT 1;
+SELECT architect.name FROM architect JOIN bridge ON architect.id = bridge.architect_id WHERE bridge.length_meters > 500;
+SELECT architect.name FROM architect JOIN bridge ON architect.id = bridge.architect_id WHERE bridge.name = 'ᠬᠥᠬᠡ ᠮᠥᠷᠡᠨ ᠤ ᠶᠡᠬᠡ ᠬᠥᠭᠥᠷᠭᠡ' INTERSECT SELECT architect.name FROM architect JOIN mill ON architect.id = mill.architect_id WHERE mill.name = 'ᠵᠣᠣ ᠵᠧᠦ ᠴᠢᠶᠣᠤ ᠬᠥᠭᠥᠷᠭᠡ';
+SELECT architect.name FROM architect JOIN mill ON architect.id = mill.architect_id WHERE mill.type = ' Mören' LIMIT 1;
+SELECT architect.name FROM architect JOIN bridge ON architect.id = bridge.architect_id WHERE bridge.length_feet > (SELECT AVG(length_feet) FROM bridge) LIMIT 1;
+SELECT architect.name FROM architect JOIN mill ON architect.id = mill.architect_id WHERE mill.built_year > 1800 LIMIT 1;
+SELECT architect.name FROM architect JOIN bridge ON architect.id = bridge.architect_id WHERE bridge.length_feet > 3608;
+SELECT architect.name FROM architect JOIN bridge ON architect.id = bridge.architect_id WHERE bridge.length_feet > bridge.length_meters;
+SELECT cinema.name FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id WHERE schedule.price <= 800 GROUP BY cinema.name HAVING COUNT(*) >= 3;
+SELECT cinema.name FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id WHERE schedule.date BETWEEN '2010-01-01' AND '2011-12-31';
+SELECT cinema.name FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id WHERE schedule.date = '2023-04-05' ORDER BY schedule.show_times_per_day DESC LIMIT 1;
+SELECT cinema.name FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id WHERE schedule.date = 'today' AND schedule.show_times_per_day >= 3;
+SELECT cinema.location FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id JOIN film ON film.film_id = schedule.film_id WHERE film.rank_in_series = 1 AND film.number_in_season = 1;
+SELECT cinema.location FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id JOIN film ON schedule.film_id = film.film_id WHERE film.rank_in_series = 1 AND film.number_in_season = 1;
+SELECT cinema.name FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id WHERE schedule.date = '今天的日期' AND schedule.show_times_per_day > 1;
+SELECT cinema.name FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id WHERE schedule.date = '2023-04-01' AND schedule.show_times_per_day > 3;
+SELECT cinema.location FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id JOIN film ON schedule.film_id = film.film_id WHERE film.rank_in_series = 1 AND film.number_in_season = 1 GROUP BY cinema.location HAVING COUNT(*) > 1;
+SELECT cinema.location FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id JOIN film ON film.film_id = schedule.film_id WHERE film.title = 'ᠶᠢᠨ ᠬᠠᠮᠤᠭ ᠤᠨ ᠶᠡᠬᠡ ᠪᠠᠭᠲᠠᠭᠠᠮᠵᠢ᠎ᠲᠠᠢ' AND film.rank_in_series = 1 GROUP BY cinema.location;
+SELECT cinema.name FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id WHERE schedule.date = '2011-01-01' AND schedule.show_times_per_day >= 3;
+SELECT cinema.name FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id JOIN film ON film.film_id = schedule.film_id WHERE film.rank_in_series = 1 AND film.number_in_season = 1 ORDER BY cinema.openning_year DESC LIMIT 1;
+SELECT cinema.name FROM cinema INNER JOIN schedule ON cinema.cinema_id = schedule.cinema_id INNER JOIN film ON schedule.film_id = film.film_id WHERE film.original_air_date BETWEEN '2010-01-01' AND '2010-12-31' GROUP BY cinema.name HAVING COUNT(*) > 1 LIMIT 1;
+SELECT cinema.name FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id WHERE cinema.openning_year >= 1970 AND cinema.openning_year <= 2000 GROUP BY cinema.name HAVING COUNT(*) >= 300;
+SELECT cinema.name FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id WHERE schedule.show_times_per_day > 2 AND schedule.price <= 300 GROUP BY cinema.name HAVING COUNT(*) = 300;
+SELECT film.title FROM film JOIN schedule ON film.film_id = schedule.film_id JOIN cinema ON schedule.cinema_id = cinema.cinema_id WHERE cinema.location = 'Bayanhüree' AND cinema.openning_year > 2000 ORDER BY film.rank_in_series ASC, film.number_in_season DESC;
+SELECT cinema.name FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id WHERE schedule.date = '今天的日期' AND schedule.show_times_per_day > 0 ORDER BY cinema.openning_year DESC LIMIT 1;
+SELECT film.title FROM film JOIN schedule ON film.film_id = schedule.film_id JOIN cinema ON schedule.cinema_id = cinema.cinema_id WHERE cinema.location = 'Бүхэл Дөрд Улаанбаатар';
+SELECT cinema.name FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id WHERE schedule.date = (SELECT MAX(date) FROM schedule) LIMIT 1;
+SELECT cinema.name FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id WHERE schedule.date = '2023-04-01' AND schedule.show_times_per_day >= 3;
+SELECT cinema.name FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id WHERE schedule.date = 'DAT' AND schedule.show_times_per_day > 0 GROUP BY cinema.name ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT cinema.name FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id WHERE schedule.date = ' khu.bolgan.ner ' GROUP BY cinema.name ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT cinema.name FROM schedule INNER JOIN cinema ON schedule.cinema_id = cinema.cinema_id GROUP BY cinema.name ORDER BY COUNT(schedule.film_id) DESC LIMIT 1;
+SELECT cinema.name FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id WHERE schedule.date = (SELECT MAX(date) FROM schedule) AND schedule.show_times_per_day = (SELECT MAX(show_times_per_day) FROM schedule);
+SELECT cinema.name FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id WHERE schedule.date = (SELECT MAX(date) FROM schedule) LIMIT 1;
+SELECT name FROM cinema WHERE cinema_id IN (SELECT cinema_id FROM schedule WHERE film_id IN (SELECT film_id FROM film WHERE title = 'TIONGKAL TUGLASAN KHASHA MUGU OLANDURIDUGAACHIY YIILELGELENE'))
+SELECT cinema.name FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id WHERE schedule.show_times_per_day >= 300;
+SELECT cinema.name FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id WHERE schedule.price <= 300 GROUP BY cinema.name HAVING COUNT(*) >= 3;
+SELECT cinema.location FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id JOIN film ON schedule.film_id = film.film_id WHERE film.rank_in_series = 1;
+SELECT cinema.name FROM cinema JOIN schedule ON cinema.cinema_id = schedule.cinema_id WHERE schedule.date = ' ulaanbaatar ' AND schedule.show_times_per_day > 1;
+SELECT DISTINCT course.cname FROM course JOIN enrolled_in ON course.cid = enrolled_in.cid JOIN student ON enrolled_in.stuid = student.stuid WHERE student.lname = '蒙古语姓名' AND student.fname = '蒙古语名字';
+SELECT DISTINCT course.cname FROM course JOIN enrolled_in ON course.cid = enrolled_in.cid JOIN student ON enrolled_in.stuid = student.stuid WHERE student.lname = '蒙古语姓名' AND student.fname = '蒙古语名字';
+SELECT COUNT(*) FROM student WHERE major = 'CS' AND age > 20;
+SELECT DISTINCT faculty.lname, faculty.fname FROM faculty JOIN course ON faculty.facid = course.instructor WHERE course.dno IN ( SELECT dno FROM department WHERE division = 'Biology' ) AND course.days = 'MWF';
+SELECT COUNT(*) FROM course WHERE credits = 3;
+SELECT `major` FROM `student`;
+SELECT `lname` FROM `faculty` WHERE `facid` IN (SELECT `instructor` FROM `course` WHERE `cname` = 'ᠭᠠᠷᠠᠭ ᠤᠨ ᠨᠢᠭᠡᠨ');
+SELECT DISTINCT faculty.lname, faculty.fname FROM faculty JOIN course ON faculty.facid = course.instructor JOIN enrolled_in ON course.cid = enrolled_in.cid WHERE enrolled_in.grade = 'A' AND course.credits = 3;
+SELECT DISTINCT faculty.fname, faculty.lname FROM faculty JOIN course ON faculty.facid = course.instructor WHERE course.cname = '数据库系统概论';
+SELECT DISTINCT student.lname, student.fname FROM student JOIN enrolled_in ON student.stuid = enrolled_in.stuid JOIN course ON enrolled_in.cid = course.cid JOIN department ON course.dno = department.dno WHERE department.dname = 'Хамыарултайн хэлтэс';
+SELECT DISTINCT lname FROM faculty WHERE facid IN (SELECT instructor FROM course WHERE dno IN (SELECT dno FROM department WHERE division = 'Humanities'));
+SELECT dname FROM department WHERE dno IN ( SELECT dno FROM course WHERE credits = 1 )
+SELECT stuid FROM student WHERE sex = 'F' AND major = 'CS';
+SELECT DISTINCT student.stuid, student.fname, student.lname FROM student JOIN enrolled_in ON student.stuid = enrolled_in.stuid JOIN gradeconversion ON enrolled_in.grade = gradeconversion.lettergrade WHERE gradeconversion.gradepoint >= 3.0 AND enrolled_in.cid IN ( SELECT cid FROM enrolled_in WHERE stuid IN ( SELECT stuid FROM student WHERE major = 'CS' ) ) ORDER BY student.lname, student.fname;
+SELECT DISTINCT faculty.fname, faculty.lname FROM faculty JOIN course ON faculty.facid = course.instructor JOIN enrolled_in ON course.cid = enrolled_in.cid WHERE enrolled_in.grade = 'A'
+SELECT DISTINCT faculty.fname, faculty.lname FROM faculty JOIN course ON faculty.facid = course.instructor JOIN enrolled_in ON course.cid = enrolled_in.cid WHERE enrolled_in.grade = 'A' OR enrolled_in.grade = 'B';
+SELECT lname FROM student WHERE major = 'CS' AND age > 20;
+SELECT lname FROM student WHERE sex = 'F' AND major = 'CS' LIMIT 1;
+SELECT stuid FROM enrolled_in WHERE grade = 'B' INTERSECT SELECT stuid FROM enrolled_in WHERE grade = 'A';
+SELECT lname FROM faculty WHERE fname = 'ᠵᠠᠰᠠᠭ' AND lname = 'ᠵᠠᠬᠢᠷᠭ᠎ᠠ';
+SELECT DISTINCT faculty.fname, faculty.lname FROM faculty JOIN course ON faculty.facid = course.instructor JOIN department ON course.dno = department.dno WHERE department.division = '计算机科学'
+SELECT lname, fname FROM faculty WHERE sex = 'F' INTERSECT SELECT lname, fname FROM student WHERE sex = 'F';
+SELECT facid FROM faculty WHERE rank = 'Professor' EXCEPT SELECT facid FROM member_of WHERE appt_type = 'Adjunct';
+SELECT facid FROM member_of WHERE appt_type = 'Prof' INTERSECT SELECT facid FROM member_of WHERE appt_type = 'AsstProf';
+SELECT DISTINCT faculty.lname, faculty.fname FROM faculty JOIN course ON faculty.facid = course.instructor JOIN department ON course.dno = department.dno WHERE department.division = 'CS' AND course.days = 'MWF';
+SELECT DISTINCT faculty.lname, faculty.fname FROM faculty JOIN member_of ON faculty.facid = member_of.facid JOIN department ON member_of.dno = department.dno WHERE department.dname = 'Computer Science' AND faculty.rank = 'Professor';
+SELECT DISTINCT course.cid FROM course WHERE course.credits = 3;
+SELECT DISTINCT student.stuid FROM student JOIN enrolled_in ON student.stuid = enrolled_in.stuid WHERE enrolled_in.grade = 'A' AND student.major = 'CS';
+SELECT stuid FROM student WHERE major = 'CS' EXCEPT SELECT stuid FROM minor_in WHERE dno = (SELECT dno FROM department WHERE dname = 'CS');
+SELECT COUNT(*) FROM enrolled_in WHERE grade = 'A' OR grade = 'A+';
+SELECT stuid FROM student WHERE sex = 'F' AND age > 18 AND city_code = 'CN';
+SELECT fname FROM student WHERE sex = 'F' AND age > (SELECT AVG(age) FROM student) LIMIT 1;
+SELECT DISTINCT student.stuid FROM student JOIN minor_in ON student.stuid = minor_in.stuid JOIN department ON minor_in.dno = department.dno WHERE department.division = 'Humanities';
+SELECT DISTINCT student.stuid FROM student INNER JOIN minor_in ON student.stuid = minor_in.stuid WHERE minor_in.dno = (SELECT dno FROM department WHERE division = '工程技术学院');
+SELECT DISTINCT student.stuid FROM student JOIN minor_in ON student.stuid = minor_in.stuid JOIN department ON minor_in.dno = department.dno WHERE department.building = 'Engineering';
+SELECT lname FROM student WHERE major = 'CS'
+SELECT DISTINCT student.stuid FROM student INNER JOIN minor_in ON student.stuid = minor_in.stuid WHERE minor_in.dno IN (SELECT dno FROM department WHERE division = 'Engineering') AND student.major IN (SELECT dno FROM department WHERE division = 'Science');
+SELECT stuid FROM student WHERE sex = 'F' EXCEPT SELECT stuid FROM enrolled_in WHERE grade = 'F';
+SELECT DISTINCT student.fname, student.lname FROM student JOIN enrolled_in ON student.stuid = enrolled_in.stuid JOIN course ON enrolled_in.cid = course.cid WHERE course.cname = '数据库系统概论';
+SELECT DISTINCT student.lname, student.fname FROM student JOIN enrolled_in ON student.stuid = enrolled_in.stuid JOIN course ON enrolled_in.cid = course.cid JOIN faculty ON course.instructor = faculty.facid WHERE faculty.lname = 'Salan' AND faculty.fname = 'Surchu';
+SELECT DISTINCT faculty.fname, faculty.lname FROM faculty JOIN member_of ON faculty.facid = member_of.facid JOIN department ON member_of.dno = department.dno WHERE department.dname = 'CS' AND member_of.appt_type = 'Tenure Track';
+SELECT DISTINCT faculty.fname, faculty.lname FROM faculty JOIN member_of ON faculty.facid = member_of.facid JOIN department ON member_of.dno = department.dno WHERE department.dname = 'Computer Science';
+SELECT DISTINCT faculty.fname, faculty.lname FROM faculty JOIN course ON faculty.facid = course.instructor JOIN enrolled_in ON course.cid = enrolled_in.cid WHERE enrolled_in.grade = 'A' AND course.dno = (SELECT dno FROM member_of WHERE facid = faculty.facid AND appt_type = 'chair');
+SELECT DISTINCT faculty.fname, faculty.lname FROM faculty JOIN course ON faculty.facid = course.instructor JOIN enrolled_in ON course.cid = enrolled_in.cid WHERE enrolled_in.grade = 'A'
+SELECT COUNT(*) FROM enrolled_in WHERE grade = 'A' OR grade = 'B';
+SELECT COUNT(*) FROM course WHERE credits = 3;
+SELECT DISTINCT faculty.fname, faculty.lname FROM faculty JOIN member_of ON faculty.facid = member_of.facid JOIN department ON member_of.dno = department.dno WHERE department.division = 'A&S' AND faculty.rank = 'Prof';
+SELECT DISTINCT lname FROM student WHERE major = (SELECT dname FROM department WHERE division = 'Humanities') AND stuid IN (SELECT stuid FROM minor_in WHERE dno = (SELECT dno FROM department WHERE division = 'Social Science'));
+SELECT lname, fname FROM student WHERE major IN (SELECT dno FROM minor_in GROUP BY dno HAVING COUNT(*) > 1) ORDER BY lname, fname;
+SELECT DISTINCT student.stuid FROM student JOIN enrolled_in ON student.stuid = enrolled_in.stuid JOIN course ON enrolled_in.cid = course.cid WHERE course.dno = (SELECT dno FROM department WHERE dname = 'Computer Science');
+SELECT DISTINCT faculty.fname, faculty.lname FROM faculty JOIN member_of ON faculty.facid = member_of.facid JOIN department ON member_of.dno = department.dno WHERE department.division = 'Engineering' AND faculty.rank = 'Professor';
+SELECT DISTINCT faculty.fname, faculty.lname FROM faculty JOIN member_of ON faculty.facid = member_of.facid JOIN department ON member_of.dno = department.dno WHERE department.division = 'CS' AND faculty.rank = 'Prof';
+SELECT DISTINCT faculty.fname, faculty.lname FROM faculty JOIN course ON faculty.facid = course.instructor JOIN enrolled_in ON course.cid = enrolled_in.cid WHERE enrolled_in.grade = 'A' AND course.dno = (SELECT dno FROM department WHERE division = 'CS')
+SELECT facid FROM faculty WHERE rank = 'Professor' INTERSECT SELECT instructor FROM course WHERE credits = 3;
+SELECT lname FROM student WHERE major = 'CS' AND age > 20;
+SELECT COUNT(*) FROM student WHERE major = 'CS' AND age > 20;
+SELECT stuid FROM student WHERE major = 'CS' AND AVG(grade) >= 3.8
+SELECT stuid FROM student WHERE gpa BETWEEN 3.8 AND 4.0 LIMIT 1;
+SELECT lname FROM faculty WHERE room = 520;
+SELECT COUNT(*) FROM student WHERE major = 'CS' AND age > 520;
+SELECT dname FROM department WHERE dno = 140;
+SELECT COUNT(*) FROM enrolled_in WHERE grade = 'B';
+SELECT DISTINCT faculty.fname, faculty.lname FROM faculty JOIN member_of ON faculty.facid = member_of.facid JOIN department ON member_of.dno = department.dno WHERE department.division = 'CS' AND member_of.appt_type = 'Tenured';
+SELECT DISTINCT faculty.fname, faculty.lname FROM faculty JOIN member_of ON faculty.facid = member_of.facid JOIN department ON member_of.dno = department.dno WHERE department.dname = 'Computer Science' AND member_of.appt_type = 'Tenured';
+SELECT stuid FROM student WHERE sex = 'F' AND major = 'CS';
+SELECT stuid FROM student WHERE major = 'Biology'
+SELECT COUNT(*) FROM student WHERE major = 'Computer Science';
+SELECT stuid FROM student WHERE major = 'CS' INTERSECT SELECT stuid FROM minor_in WHERE dno = 'CS';
+SELECT COUNT(DISTINCT enrolled_in.stuid) FROM enrolled_in JOIN course ON enrolled_in.cid = course.cid WHERE course.credits = 4;
+SELECT lname, fname FROM student WHERE major = 3 INTERSECT SELECT lname, fname FROM student WHERE major = 1 INTERSECT SELECT lname, fname FROM student WHERE major = 4;
+SELECT DISTINCT course.cname FROM course JOIN faculty ON course.instructor = faculty.facid JOIN department ON course.dno = department.dno WHERE department.dname = 'ᠬᠠᠮᠢᠶᠠᠷᠤᠯᠲᠠ᠎ᠶ᠋ᠢᠨ ᠬᠡᠯᠲᠡᠰ' AND faculty.lname = 'ᠶᠠᠪᠤᠳᠠᠯ᠎ ᠤᠨ ᠬᠡᠯᠲᠡᠰ';
+SELECT instructor FROM course WHERE cname = 'ᠵᠠᠰᠠᠭ ᠵᠠᠬᠢᠷᠭ᠎ᠠ' AND dno IN (SELECT dno FROM department WHERE dname = 'ᠬᠠᠮᠢᠶᠠᠷᠤᠯᠲᠠ᠎ᠶ᠋ᠢᠨ ᠬᠡᠯᠲᠡᠰ')
+SELECT DISTINCT student.stuid FROM student JOIN enrolled_in ON student.stuid = enrolled_in.stuid JOIN course ON enrolled_in.cid = course.cid JOIN faculty ON course.instructor = faculty.facid WHERE faculty.lname = 'Yamal Chuo Khiyeldude Orolcha';
+SELECT lname FROM faculty WHERE rank = 'Professor' INTERSECT SELECT lname FROM faculty WHERE building = 'Watson';
+SELECT location FROM stadium ORDER BY capacity DESC LIMIT 1;
+SELECT location FROM stadium WHERE capacity > (SELECT AVG(capacity) FROM stadium)
+SELECT location FROM stadium WHERE capacity > (SELECT AVG(capacity) FROM stadium)
+SELECT location FROM stadium WHERE capacity > (SELECT AVG(capacity) FROM stadium);
+SELECT name FROM singer WHERE is_male = 1 AND age > 30 LIMIT 1;
+SELECT location FROM stadium WHERE capacity > (SELECT AVG(capacity) FROM stadium);
+SELECT DISTINCT singer_id FROM singer WHERE is_male = 1 AND song_release_year BETWEEN 2000 AND 2010;
+SELECT name FROM singer WHERE country = 'China' AND is_male = 1;
+SELECT COUNT(*) FROM concert WHERE year = 2020;
+SELECT COUNT(*) FROM concert WHERE year = 20;
+SELECT singer.name FROM singer JOIN singer_in_concert ON singer.singer_id = singer_in_concert.singer_id JOIN concert ON concert.concert_id = singer_in_concert.concert_id JOIN stadium ON stadium.stadium_id = concert.stadium_id WHERE stadium.location = 'ᠳᠠᠯᠢ ᠪᠤᠰᠤ' AND concert.year = 2023;
+SELECT location FROM stadium ORDER BY capacity DESC LIMIT 1;
+SELECT DISTINCT concert.concert_name FROM concert JOIN stadium ON concert.stadium_id = stadium.stadium_id WHERE stadium.capacity >= 50000;
+SELECT name FROM singer WHERE country = 'China' AND is_male = 1;
+SELECT location FROM stadium JOIN concert ON stadium.stadium_id = concert.stadium_id WHERE concert.concert_id IN ( SELECT concert_id FROM singer_in_concert JOIN singer ON singer_in_concert.singer_id = singer.singer_id WHERE age BETWEEN 5000 AND 10000 )
+SELECT location FROM stadium WHERE highest BETWEEN 5000 AND 10000;
+SELECT location FROM stadium WHERE stadium_id IN (SELECT stadium_id FROM concert WHERE year = 2005)
+SELECT location FROM stadium WHERE stadium_id IN (SELECT stadium_id FROM concert WHERE year = 2008)
+SELECT location FROM stadium WHERE stadium_id IN (SELECT stadium_id FROM concert WHERE year = 2005)
+SELECT location FROM stadium WHERE stadium_id IN (SELECT stadium_id FROM concert WHERE year = 2008) LIMIT 1;
+SELECT DISTINCT concert.concert_name FROM concert JOIN stadium ON concert.stadium_id = stadium.stadium_id WHERE stadium.capacity BETWEEN 2014 AND 2015;
+SELECT concert.concert_name FROM concert JOIN stadium ON concert.stadium_id = stadium.stadium_id WHERE stadium.capacity BETWEEN 2014 AND 2015;
+SELECT concert.concert_name FROM concert JOIN stadium ON concert.stadium_id = stadium.stadium_id WHERE stadium.capacity >= 50000;
+SELECT concert.concert_name FROM concert JOIN stadium ON concert.stadium_id = stadium.stadium_id WHERE stadium.capacity > 50000;
+SELECT DISTINCT singer.name FROM singer JOIN singer_in_concert ON singer.singer_id = singer_in_concert.singer_id JOIN concert ON concert.concert_id = singer_in_concert.concert_id JOIN stadium ON stadium.stadium_id = concert.stadium_id WHERE concert.year = 2014 AND stadium.location = '北京';
+SELECT location FROM stadium WHERE capacity > (SELECT AVG(capacity) FROM stadium);
+SELECT concert_name FROM concert WHERE concert_id IN (SELECT concert_id FROM singer_in_concert WHERE singer_id IN (SELECT singer_id FROM singer WHERE is_male = 1)) AND stadium_id IN (SELECT stadium_id FROM stadium WHERE location = '北京');
+SELECT concert_name FROM concert WHERE concert_id IN (SELECT concert_id FROM singer_in_concert WHERE singer_id IN (SELECT singer_id FROM singer WHERE is_male = 1)) AND stadium_id IN (SELECT stadium_id FROM stadium WHERE location = '北京');
+SELECT location FROM stadium JOIN concert ON stadium.stadium_id = concert.stadium_id JOIN singer_in_concert ON concert.concert_id = singer_in_concert.concert_id JOIN singer ON singer_in_concert.singer_id = singer.singer_id WHERE singer.name = 'Dalai Lama';
+SELECT location FROM stadium WHERE capacity > (SELECT AVG(capacity) FROM stadium);
+SELECT location FROM stadium WHERE capacity > 30 AND capacity < 40;
+SELECT DISTINCT singer.name FROM singer JOIN singer_in_concert ON singer.singer_id = singer_in_concert.singer_id JOIN concert ON singer_in_concert.concert_id = concert.concert_id JOIN stadium ON concert.stadium_id = stadium.stadium_id WHERE stadium.location = '北京' AND concert.year = 2014;
+SELECT concert.concert_name FROM concert JOIN stadium ON concert.stadium_id = stadium.stadium_id WHERE concert.year = 2014 AND stadium.location = '北京';
+SELECT DISTINCT singer.name FROM singer JOIN singer_in_concert ON singer.singer_id = singer_in_concert.singer_id WHERE singer.is_male = 1 AND singer.song_release_year > 2000;
+SELECT singer.name FROM singer JOIN singer_in_concert ON singer.singer_id = singer_in_concert.singer_id JOIN concert ON concert.concert_id = singer_in_concert.concert_id WHERE concert.year = 2023 LIMIT 1;
+SELECT location FROM stadium WHERE capacity > (SELECT AVG(capacity) FROM stadium);
+SELECT location FROM stadium WHERE capacity > (SELECT AVG(capacity) FROM stadium)
+SELECT DISTINCT singer_id FROM singer WHERE age > 30 AND is_male = 1;
+SELECT location FROM concert INNER JOIN stadium ON concert.stadium_id = stadium.stadium_id WHERE concert.concert_name = '2014 ᠣᠨ᠎ᠳ᠋ᠤ᠌ ᠳᠠᠭᠤᠤ᠎ᠶ᠋ᠢᠨ ᠦᠳᠡᠰᠢᠯᠡᠭᠡ ᠳᠡᠭᠡᠷ᠎ᠡ ᠳᠠᠭᠤᠯᠠᠭᠰᠠᠨ ᠳᠠᠭᠤᠴᠢᠨ ᠤ ᠨᠡᠷ᠎ᠡ ᠨᠢ ᠶᠠᠭᠤ ᠪᠣᠢ ?'
+SELECT location FROM stadium WHERE capacity > (SELECT AVG(capacity) FROM stadium)
+SELECT song_name FROM singer WHERE song_name = 'ᠬᠦᠶᠢ';
+SELECT DISTINCT concert.concert_name FROM concert JOIN stadium ON concert.stadium_id = stadium.stadium_id WHERE stadium.location = '北京' AND concert.year BETWEEN 2014 AND 2015;
+SELECT DISTINCT concert.concert_name FROM concert JOIN stadium ON concert.stadium_id = stadium.stadium_id WHERE stadium.location = 'Beijing' AND concert.year BETWEEN 2014 AND 2015;
+SELECT location FROM stadium WHERE stadium_id IN ( SELECT stadium_id FROM concert WHERE year = 2000 )
+SELECT location FROM stadium JOIN concert ON stadium.stadium_id = concert.stadium_id WHERE concert.year = (SELECT MAX(year) FROM concert);
+SELECT product_name FROM products INNER JOIN order_items ON products.product_id = order_items.product_id WHERE order_item_status_code = 'Delivered';
+SELECT product_name FROM products INNER JOIN order_items ON products.product_id = order_items.product_id WHERE order_item_status_code = 'delivered';
+SELECT customer_name FROM customers JOIN customer_orders ON customers.customer_id = customer_orders.customer_id WHERE customer_orders.order_placed_datetime BETWEEN '2023-01-01' AND '2023-03-31';
+SELECT DISTINCT customers.customer_name FROM customers JOIN mailshot_customers ON customers.customer_id = mailshot_customers.customer_id JOIN mailshot_campaigns ON mailshot_customers.mailshot_id = mailshot_campaigns.mailshot_id WHERE mailshot_campaigns.mailshot_name = 'Barilgaa töröl züil boruun töröl büriin barilgaa törögei ileregülünče'
+SELECT customer_name FROM customers JOIN mailshot_customers ON customers.customer_id = mailshot_customers.customer_id WHERE outcome_code = 'Success'
+SELECT DISTINCT customers.customer_name FROM customers JOIN customer_orders ON customers.customer_id = customer_orders.customer_id JOIN order_items ON customer_orders.order_id = order_items.order_id WHERE order_items.item_status_code = 'Delivered' AND order_items.order_item_status_code = 'Full'
+SELECT DISTINCT customers.customer_email FROM customers JOIN mailshot_customers ON customers.customer_id = mailshot_customers.customer_id JOIN mailshot_campaigns ON mailshot_customers.mailshot_id = mailshot_campaigns.mailshot_id WHERE mailshot_campaigns.product_category = 'Electronics';
+SELECT DISTINCT customer_id FROM mailshot_customers WHERE mailshot_id IN ( SELECT mailshot_id FROM mailshot_campaigns WHERE product_category = 'Clothing' ) AND customer_id IN ( SELECT customer_id FROM customer_orders WHERE order_status_code = 'Delivered' );
+SELECT customer_email FROM customers WHERE customer_id IN ( SELECT customer_id FROM mailshot_customers WHERE outcome_code = 'Opened' ) AND customer_id IN ( SELECT customer_id FROM customer_orders WHERE order_status_code = 'Completed' );
+SELECT DISTINCT customers.customer_name FROM customers JOIN mailshot_customers ON customers.customer_id = mailshot_customers.customer_id JOIN mailshot_campaigns ON mailshot_customers.mailshot_id = mailshot_campaigns.mailshot_id WHERE mailshot_campaigns.product_category = 'Clothing' AND mailshot_customers.outcome_code = 'Success';
+SELECT customer_name FROM customers JOIN customer_orders ON customers.customer_id = customer_orders.customer_id JOIN order_items ON customer_orders.order_id = order_items.order_id WHERE order_item_status_code = 'Delivered' AND product_id = (SELECT product_id FROM order_items WHERE item_id = 'Харигу Егэй')
+SELECT DISTINCT customers.customer_name FROM customers JOIN mailshot_customers ON customers.customer_id = mailshot_customers.customer_id JOIN mailshot_campaigns ON mailshot_customers.mailshot_id = mailshot_campaigns.mailshot_id WHERE mailshot_campaigns.product_category = 'Books' AND mailshot_campaigns.mailshot_start_date >= '2023-01-01' AND mailshot_campaigns.mailshot_end_date <= '2023-12-31';
+SELECT DISTINCT customers.customer_name FROM customers JOIN customer_orders ON customers.customer_id = customer_orders.customer_id JOIN order_items ON customer_orders.order_id = order_items.order_id WHERE order_items.order_item_status_code = 'Delivered';
+SELECT customer_name FROM customers JOIN customer_orders ON customers.customer_id = customer_orders.customer_id WHERE order_status_code = ' Hövsgol Province' AND shipping_method_code = 'Tülkhü'
+SELECT DISTINCT customer_id FROM customer_orders WHERE order_status_code = 'Delivered' AND order_delivered_datetime BETWEEN '2023-01-01' AND '2023-03-31';
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'withdrawal' ORDER BY transaction_amount DESC LIMIT 1;
+SELECT customer_first_name, customer_last_name FROM customers JOIN customers_cards ON customers.customer_id = customers_cards.customer_id JOIN financial_transactions ON customers_cards.card_id = financial_transactions.card_id WHERE transaction_type = 'debit' AND transaction_date BETWEEN '2023-01-01' AND '2023-03-31';
+SELECT customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM customers_cards WHERE card_type_code = 'debit') INTERSECT SELECT customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM financial_transactions WHERE transaction_type = 'withdrawal');
+SELECT customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM customers_cards WHERE card_type_code = 'debit') INTERSECT SELECT customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM financial_transactions WHERE transaction_type = 'deposit');
+SELECT customer_first_name, customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM accounts WHERE account_id IN (SELECT account_id FROM financial_transactions WHERE transaction_type = 'Deposit' AND transaction_amount > 3000))
+SELECT customer_first_name, customer_last_name FROM customers JOIN customers_cards ON customers.customer_id = customers_cards.customer_id JOIN financial_transactions ON customers_cards.card_id = financial_transactions.card_id WHERE transaction_type = 'debit' AND transaction_amount > 338 ORDER BY transaction_date DESC LIMIT 3;
+SELECT customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM accounts WHERE account_id IN (SELECT account_id FROM financial_transactions WHERE transaction_amount > 5000))
+SELECT customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM customers_cards WHERE card_id IN (SELECT card_id FROM financial_transactions WHERE transaction_amount > 5000)) LIMIT 1;
+SELECT customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id JOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id WHERE card_type_code = 'Уралгы' AND card_number LIKE 'Ван%'
+SELECT customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM customers_cards WHERE card_id IN (SELECT card_id FROM financial_transactions WHERE transaction_amount > 5000))
+SELECT customer_first_name, customer_last_name FROM customers JOIN financial_transactions ON customers.customer_id = financial_transactions.customer_id JOIN accounts ON financial_transactions.account_id = accounts.account_id WHERE accounts.account_name = 'checking';
+SELECT customer_last_name, customer_first_name FROM customers WHERE customer_id IN ( SELECT customer_id FROM customers_cards WHERE card_id IN ( SELECT card_id FROM financial_transactions WHERE transaction_amount > 1000 ) )
+SELECT customer_first_name, customer_last_name FROM customers JOIN customers_cards ON customers.customer_id = customers_cards.customer_id JOIN financial_transactions ON customers_cards.card_id = financial_transactions.card_id WHERE transaction_type = 'Expense' AND transaction_amount > 500 ORDER BY transaction_date DESC;
+SELECT customer_first_name, customer_last_name FROM customers JOIN customers_cards ON customers.customer_id = customers_cards.customer_id JOIN financial_transactions ON customers_cards.card_id = financial_transactions.card_id JOIN accounts ON financial_transactions.account_id = accounts.account_id WHERE accounts.account_name = 'Хамуг ун olan дасаах керэлгэчидний данс' GROUP BY customers.customer_id;
+SELECT customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM customers_cards WHERE card_id IN (SELECT card_id FROM financial_transactions WHERE transaction_amount > 5000))
+SELECT customer_first_name, customer_last_name FROM customers JOIN customers_cards ON customers.customer_id = customers_cards.customer_id JOIN financial_transactions ON customers_cards.card_id = financial_transactions.card_id JOIN accounts ON financial_transactions.account_id = accounts.account_id WHERE transaction_type = 'Expense' AND transaction_amount > 5000;
+SELECT customer_first_name, customer_last_name FROM customers JOIN customers_cards ON customers.customer_id = customers_cards.customer_id JOIN financial_transactions ON customers_cards.card_id = financial_transactions.card_id WHERE financial_transactions.transaction_type = 'debit' ORDER BY financial_transactions.transaction_date DESC LIMIT 1;
+SELECT customer_first_name, customer_last_name FROM customers
+SELECT customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM customers_cards WHERE card_id IN (SELECT card_id FROM financial_transactions WHERE transaction_amount > 5000))
+SELECT customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM customers_cards WHERE card_id IN (SELECT card_id FROM financial_transactions WHERE transaction_type = 'withdrawal' INTERSECT SELECT card_id FROM financial_transactions WHERE transaction_type = 'deposit'))
+SELECT DISTINCT customers.customer_last_name FROM customers JOIN customers_cards ON customers.customer_id = customers_cards.customer_id JOIN financial_transactions ON customers_cards.card_id = financial_transactions.card_id WHERE financial_transactions.transaction_type = 'debit';
+SELECT customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM customers_cards WHERE card_id IN (SELECT card_id FROM financial_transactions WHERE transaction_type = 'withdrawal'))
+SELECT customer_first_name, customer_last_name FROM customers JOIN customers_cards ON customers.customer_id = customers_cards.customer_id JOIN financial_transactions ON customers_cards.card_id = financial_transactions.card_id JOIN accounts ON financial_transactions.account_id = accounts.account_id WHERE accounts.account_name = 'Мөнгол банк';
+SELECT customer_last_name, customer_first_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'Expense' AND transaction_amount > 5000;
+SELECT customer_first_name, customer_last_name FROM customers JOIN financial_transactions ON customers.customer_id = financial_transactions.customer_id JOIN accounts ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = ' Expense ';
+SELECT customer_first_name, customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM accounts WHERE account_id IN (SELECT account_id FROM financial_transactions WHERE transaction_type = 'Deposit')) LIMIT 1;
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'Expense' AND transaction_amount > 5000;
+SELECT customer_first_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'withdrawal' ORDER BY transaction_amount DESC LIMIT 1;
+SELECT customer_first_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'Expense' AND transaction_amount > 5000 ORDER BY transaction_date DESC LIMIT 1;
+SELECT customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id JOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id WHERE card_type_code = 'Сыйын' AND transaction_type = 'Хаан чуу' GROUP BY customer_last_name HAVING COUNT(DISTINCT transaction_date) >= 3;
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'Expense' AND transaction_amount > 500 GROUP BY customers.customer_id HAVING COUNT(*) >= 3;
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'Expense' AND transaction_amount > 5000;
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'Expense' AND transaction_amount > 500 ORDER BY transaction_date DESC;
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'Expense' AND transaction_amount > 500 ORDER BY transaction_amount DESC LIMIT 1;
+SELECT customer_first_name, customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM accounts WHERE account_id IN (SELECT account_id FROM financial_transactions WHERE transaction_id = 45605964842))
+SELECT customer_first_name, customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM accounts WHERE account_id IN (SELECT account_id FROM financial_transactions WHERE transaction_id = '4560596484842')) LIMIT 1;
+SELECT account_name FROM accounts WHERE customer_id IN (SELECT customer_id FROM customers WHERE customer_phone = '456059648442');
+SELECT customer_phone FROM customers WHERE customer_id IN (SELECT customer_id FROM financial_transactions WHERE transaction_amount > 5000) LIMIT 1;
+SELECT customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM accounts WHERE account_id IN (SELECT account_id FROM financial_transactions WHERE transaction_type = 'Withdrawal'))
+SELECT customer_last_name FROM customers WHERE customer_last_name = 'Уралиг' INTERSECT SELECT customer_last_name FROM customers WHERE customer_last_name = 'Ван';
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = ' Expense ';
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'Expense' ORDER BY transaction_amount DESC LIMIT 1;
+SELECT customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'Expense' AND transaction_amount > 5000 ORDER BY transaction_amount DESC LIMIT 1;
+SELECT customer_first_name FROM customers WHERE customer_id IN (SELECT customer_id FROM accounts WHERE account_id IN (SELECT account_id FROM financial_transactions WHERE transaction_type = 'Expense' AND transaction_amount > 500));
+SELECT customer_last_name, customer_first_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'Expense' AND transaction_amount > 500;
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'Expense' AND transaction_amount > 5000;
+SELECT customer_last_name, customer_first_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'Expense' ORDER BY transaction_amount DESC LIMIT 1;
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'debit';
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'debit';
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'Expense' AND transaction_amount > 5000;
+SELECT customer_first_name, customer_last_name FROM customers JOIN customers_cards ON customers.customer_email = customers_cards.card_number JOIN financial_transactions ON customers_cards.card_id = financial_transactions.card_id JOIN accounts ON financial_transactions.account_id = accounts.account_id WHERE accounts.account_name = 'Данс эрүхэйн тогтоох хэмжээний банк' AND financial_transactions.transaction_type = 'Данс нэвтрэх';
+SELECT DISTINCT customers.customer_id, customers.customer_last_name FROM customers JOIN customers_cards ON customers.customer_id = customers_cards.card_id JOIN financial_transactions ON customers_cards.card_id = financial_transactions.card_id WHERE financial_transactions.transaction_type = 'Expense' AND financial_transactions.transaction_amount > 5000;
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_amount = (SELECT MAX(transaction_amount) FROM financial_transactions);
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_amount > 5000;
+SELECT customer_first_name, customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM accounts WHERE account_id IN (SELECT account_id FROM financial_transactions WHERE transaction_type = 'Deposit'))
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'Expense' AND transaction_amount > 5000;
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_amount > 5000;
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'Expense' AND transaction_amount > 10000 GROUP BY customers.customer_id HAVING COUNT(*) > 5;
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'Expense';
+SELECT customer_first_name, customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM accounts WHERE account_id IN (SELECT account_id FROM financial_transactions WHERE transaction_type = 'Expense'))
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'debit';
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'Expense' AND transaction_amount > 500 GROUP BY customers.customer_id HAVING COUNT(*) > 3;
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_amount > 5000;
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_amount > 1000 ORDER BY transaction_date DESC;
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'Expense' AND transaction_amount > 5000;
+SELECT customer_first_name, customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM accounts WHERE account_id IN (SELECT account_id FROM financial_transactions WHERE transaction_amount > 5000))
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_amount > 1000 ORDER BY transaction_date DESC;
+SELECT customer_first_name, customer_last_name FROM customers JOIN financial_transactions ON customers.customer_id = financial_transactions.account_id WHERE transaction_amount > 5000 ORDER BY transaction_date DESC LIMIT 1;
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE financial_transactions.transaction_amount > 5000;
+SELECT customer_first_name, customer_last_name FROM customers JOIN financial_transactions ON customers.customer_id = financial_transactions.account_id WHERE transaction_amount > 1000 ORDER BY transaction_date DESC LIMIT 5;
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'Expense' AND transaction_date BETWEEN '2023-01-01' AND '2023-03-31' GROUP BY customers.customer_id HAVING SUM(transaction_type = 'Expense') >= 3 ORDER BY SUM(transaction_amount) DESC LIMIT 1;
+SELECT customer_first_name, customer_last_name FROM customers JOIN financial_transactions ON customers.customer_id = financial_transactions.account_id JOIN customers_cards ON financial_transactions.card_id = customers_cards.card_id WHERE transaction_type = 'Expense' AND transaction_date BETWEEN '2023-01-01' AND '2023-03-31';
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_amount > 5000;
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_type = 'Expense' AND transaction_amount > 5000;
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_amount > 5000;
+SELECT customer_first_name, customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM accounts WHERE account_id IN (SELECT account_id FROM financial_transactions WHERE transaction_amount > 5000))
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE transaction_amount > 5000;
+SELECT customer_first_name, customer_last_name FROM customers JOIN accounts ON customers.customer_id = accounts.customer_id JOIN financial_transactions ON accounts.account_id = financial_transactions.account_id WHERE financial_transactions.transaction_amount > 5000 ORDER BY financial_transactions.transaction_date DESC;
+SELECT DISTINCT customers.customer_first_name, customers.customer_last_name FROM customers JOIN customers_cards ON customers.customer_id = customers_cards.customer_id JOIN financial_transactions ON customers_cards.card_id = financial_transactions.card_id WHERE financial_transactions.transaction_type = 'debit' AND financial_transactions.transaction_amount > 100;
+SELECT customer_first_name, customer_last_name FROM customers WHERE customer_id IN (SELECT customer_id FROM customers_cards WHERE card_id IN (SELECT card_id FROM financial_transactions WHERE transaction_type = 'Expense'))
+SELECT document_name FROM documents JOIN document_sections ON documents.document_code = document_sections.document_code WHERE section_sequence = (SELECT MAX(section_sequence) FROM document_sections WHERE document_code = documents.document_code);
+SELECT documents.document_name FROM documents JOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code JOIN functional_areas ON document_functional_areas.functional_area_code = functional_areas.functional_area_code WHERE functional_areas.functional_area_description = 'Нэрэйдүл';
+SELECT document_name FROM documents JOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code WHERE document_functional_areas.functional_area_code = 'СУРБУЛЖИЛГАН_УДАГЭА_НОГООН_ДУКЭМНТҮН_НЭРИДУЛЖИЧИ_СУРБУЛЖИЛГДДАГ';
+SELECT user_name FROM users INNER JOIN roles ON users.role_code = roles.role_code WHERE role_description = 'Сурбульжилсан удаагаа хамуг эца төлөвлөгч';
+SELECT document_name FROM documents JOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code WHERE document_functional_areas.functional_area_code = '4';
+SELECT document_name FROM documents JOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code WHERE document_functional_areas.functional_area_code = '4';
+SELECT document_name FROM documents WHERE document_code IN ( SELECT document_code FROM document_functional_areas )
+SELECT document_name FROM documents JOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code JOIN functional_areas ON document_functional_areas.functional_area_code = functional_areas.functional_area_code WHERE functional_areas.functional_area_description = 'Хамгийн их татагдсан';
+SELECT document_name FROM documents;
+SELECT document_name FROM documents JOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code WHERE functional_area_code = 'BUCIG-MATWURLYN-DUMDACHI-SURBULJILAH-ODAGYYI-EHIRHE-BIHICIG';
+SELECT document_name FROM documents JOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code JOIN functional_areas ON document_functional_areas.functional_area_code = functional_areas.functional_area_code WHERE functional_areas.functional_area_description = 'Социальная защита';
+SELECT document_name FROM documents JOIN document_structures ON documents.document_structure_code = document_structures.document_structure_code WHERE document_structures.document_structure_code = 'BUCAGD';
+SELECT document_name FROM documents WHERE document_name = 'ᠵᠠᠩ ᠸᠧᠢ᠎ᠶ᠋ᠢᠨ ᠲᠣᠪᠴᠢ ᠨᠠᠮᠲᠠᠷ';
+SELECT document_name FROM documents JOIN document_sections ON documents.document_code = document_sections.document_code WHERE section_title = 'ᠵᠠᠩ ᠸᠧᠢ᠎ᠶ᠋ᠢᠨ ᠳᠥᠭᠥᠮ ᠨᠠᠮᠲᠠᠷ';
+SELECT documents.document_name FROM documents JOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code JOIN functional_areas ON document_functional_areas.functional_area_code = functional_areas.functional_area_code WHERE functional_areas.functional_area_description = 'Хамуг сун делгэрж байгаа байгууллага';
+SELECT document_name FROM documents WHERE document_type_code = 'Бүтээгдэхүүн'
+SELECT document_name FROM documents JOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code WHERE document_functional_areas.functional_area_code = '10000';
+SELECT document_name FROM documents WHERE document_code IN ( SELECT document_code FROM document_functional_areas WHERE functional_area_code = '10000' ) LIMIT 100;
+SELECT document_name FROM documents WHERE document_structure_code = '½ÈÄÏ¼öÈëÈý¼¶ÈýÈë½ÇÅä';
+SELECT document_sections.section_title FROM document_sections JOIN documents ON document_sections.document_code = documents.document_code JOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code WHERE document_functional_areas.functional_area_code = 'ᠵᠠᠩ ᠸᠧᠢ᠎ᠶ᠋ᠢᠨ ᠲᠣᠪᠴᠢ ᠨᠠᠮᠲᠠᠷ';
+SELECT document_sections.section_title FROM document_sections JOIN documents ON document_sections.section_code = documents.document_code JOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code WHERE document_functional_areas.functional_area_code = 'Бүх эрх хууль';
+SELECT document_name FROM documents JOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code WHERE functional_area_code = '½ÈÈ';
+SELECT DISTINCT users.user_login FROM users INNER JOIN roles ON users.role_code = roles.role_code WHERE roles.role_description = 'Admin';
+SELECT role_description FROM roles WHERE role_code IN (SELECT role_code FROM users WHERE user_login = 'НэрЭгцэгЧиглэл');
+SELECT document_name FROM documents WHERE document_code IN ( SELECT document_code FROM document_functional_areas WHERE functional_area_code IN ( SELECT functional_area_code FROM functional_areas WHERE parent_functional_area_code = ( SELECT functional_area_code FROM functional_areas WHERE functional_area_code = '½ÈÊý½ºÆ®' ) ) )
+SELECT document_name FROM documents JOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code JOIN functional_areas ON document_functional_areas.functional_area_code = functional_areas.functional_area_code WHERE functional_areas.functional_area_code = '½½½';
+SELECT document_sections.section_title FROM document_sections JOIN documents ON document_sections.document_code = documents.document_code JOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code WHERE document_functional_areas.functional_area_code = 'ᠶᠠᠮᠠᠷᠴᠤ';
+SELECT document_type_code FROM documents LIMIT 1;
+SELECT document_code FROM document_sections WHERE section_code = 'ᠶᠠᠭᠤᠺᠦ᠋ᠮᠧᠨ᠋ᠲ᠎ ᠤᠨ ᠨᠡᠷ᠎ᠡ'
+SELECT document_sections.section_code FROM document_sections JOIN documents ON document_sections.document_code = documents.document_code WHERE documents.document_type_code = 'news';
+SELECT document_sections.section_id, document_sections.section_sequence FROM document_sections JOIN documents ON document_sections.document_code = documents.document_code WHERE documents.document_type_code = 'ТӨБЧИ_НАМТАР';
+SELECT user_login FROM users WHERE role_code = 'CV';
+SELECT role_description FROM roles WHERE role_code IN (SELECT role_code FROM users WHERE user_name = 'ᠥᠩᠭᠡᠷᠡᠭᠰᠡᠨ ᠪᠣᠢ');
+SELECT user_name FROM users WHERE role_code IN (SELECT role_code FROM roles WHERE role_description = 'admin');
+SELECT I'm sorry, but your request seems to be incomplete or contains non-instructional content. Please provide a clear question or query you'd like me to form into an SQLite SQL statement, based on the given table schemas.
+SELECT document_name FROM documents JOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code WHERE document_functional_areas.functional_area_code = 'NY';
+SELECT I'm sorry, but your request seems to be incomplete or contains non-English characters that do not clearly specify the information you need from the provided tables. Please provide a clear question or the specific columns you wish to retrieve from the given tables in English, and I will be glad to help you form the appropriate SQLite SQL query.
+SELECT documents.document_name FROM documents JOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code JOIN functional_areas ON document_functional_areas.functional_area_code = functional_areas.functional_area_code WHERE functional_areas.functional_area_description = 'Хамуг ун Ѧргүлжий хэрэглэдэг тоог бүтэцээр төгсөн документууд';
+SELECT image_url FROM images JOIN document_sections_images ON images.image_id = document_sections_images.image_id JOIN document_sections ON document_sections_images.section_id = document_sections.section_id JOIN documents ON document_sections.document_code = documents.document_code WHERE documents.document_name = 'нерэидүл даррагалалын яарал бай хууль имэх зируун нэрэидүл байршуулга URL ижил байх';
+SELECT image_url FROM images WHERE image_id IN (SELECT image_id FROM document_sections_images WHERE section_id IN (SELECT section_id FROM document_sections WHERE document_code = 'Čaɣan Tolgoi-yin Daragalsan Juigsan Jirüg Dürsüyin Nereidülbel'))
+SELECT user_name FROM users INNER JOIN roles ON users.role_code = roles.role_code WHERE role_description = 'Manager';
+SELECT user_name FROM users;
+SELECT documents.document_name FROM documents INNER JOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code INNER JOIN functional_areas ON document_functional_areas.functional_area_code = functional_areas.functional_area_code WHERE functional_areas.functional_area_description = 'Documents Management' AND documents.access_count > 100 LIMIT 1;
+SELECT document_name FROM documents JOIN document_functional_areas ON documents.document_code = document_functional_areas.document_code WHERE document_functional_areas.functional_area_code = '2';
+SELECT subject_name FROM subjects WHERE subject_id IN (SELECT subject_id FROM courses WHERE course_name = '数据库原理');
+SELECT personal_name, middle_name, family_name FROM students WHERE student_id IN ( SELECT student_id FROM student_course_enrolment WHERE course_id IN ( SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = 'ᠶᠢᠨ ᠳᠤᠮᠳᠠᠯᠢᠭᠤ') ) );
+SELECT personal_name FROM students WHERE student_id IN (SELECT student_id FROM student_course_enrolment WHERE course_id IN (SELECT course_id FROM courses WHERE subject_id IN (SELECT subject_id FROM subjects WHERE subject_id = 'ᠳ᠋ᠠᠢᠲ᠋ᠠ᠎ᠶ᠋ᠢᠨ ᠬᠥᠮᠥᠷᠭᠡ')));
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN subjects ON courses.subject_id = subjects.subject_id WHERE subjects.subject_id = ( SELECT subject_id FROM courses WHERE course_description = 'ᠳ᠋ᠠᠢᠲ᠋ᠠ᠎ᠶ᠋ᠢᠨ ᠬᠥᠮᠥᠷᠭᠡ' );
+SELECT personal_name, middle_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id WHERE courses.course_name = 'Čī čí'
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id WHERE courses.course_name = 'Či Čí'
+SELECT subjects.subject_name FROM subjects JOIN courses ON subjects.subject_id = courses.subject_id JOIN student_course_enrolment ON courses.course_id = student_course_enrolment.course_id WHERE student_course_enrolment.date_of_completion IS NOT NULL;
+SELECT personal_name, family_name FROM students WHERE student_id IN (SELECT student_id FROM student_course_enrolment WHERE course_id IN (SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = ' Mongolian History ')))
+SELECT personal_name FROM students WHERE student_id IN (SELECT student_id FROM student_course_enrolment WHERE course_id IN (SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = 'Бүхэл шинжлэх ухаан')))
+SELECT personal_name FROM students WHERE student_id IN (SELECT student_id FROM student_course_enrolment WHERE course_id IN (SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = '蒙古语')))
+SELECT students.personal_name, students.middle_name, students.family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN subjects ON courses.subject_id = subjects.subject_id WHERE subjects.subject_name = 'Biology';
+SELECT personal_name, family_name FROM students WHERE student_id IN (SELECT student_id FROM student_course_enrolment WHERE course_id IN (SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = 'Бүхэлд нэмэлт хичээлийн төрөл')))
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN subjects ON courses.subject_id = subjects.subject_id WHERE subjects.subject_name = '数据库';
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN subjects ON courses.subject_id = subjects.subject_id WHERE subjects.subject_name = ' Mongolian Language ';
+SELECT personal_name FROM students WHERE student_id IN (SELECT student_id FROM student_course_enrolment WHERE course_id IN (SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = ' Mongolian ')))
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id WHERE date_of_completion IS NOT NULL;
+SELECT login_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN course_authors_and_tutors ON courses.author_id = course_authors_and_tutors.author_id WHERE course_authors_and_tutors.family_name = 'Өнгэрхү';
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN course_authors_and_tutors ON courses.author_id = course_authors_and_tutors.author_id WHERE course_authors_and_tutors.personal_name = 'ᠥᠩᠭᠡᠷᠡᠵᠦ' AND course_authors_and_tutors.family_name = 'ᠳᠦᠩ ᠪᠣᠢ';
+SELECT personal_name, family_name FROM students WHERE student_id IN (SELECT student_id FROM student_course_enrolment WHERE course_id IN (SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = 'Ilaldal')))
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN subjects ON courses.subject_id = subjects.subject_id WHERE subjects.subject_name = 'ᠢᠯᠠᠭᠳᠠᠭᠰᠠᠨ';
+SELECT personal_name FROM students WHERE student_id IN (SELECT student_id FROM student_course_enrolment WHERE course_id IN (SELECT course_id FROM courses WHERE subject_id IN (SELECT subject_id FROM subjects WHERE subject_name = 'ᠷᠦᠢ')))
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN course_authors_and_tutors ON courses.author_id = course_authors_and_tutors.author_id WHERE course_authors_and_tutors.family_name = '习近平总';
+SELECT personal_name, middle_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN course_authors_and_tutors ON courses.author_id = course_authors_and_tutors.author_id WHERE course_authors_and_tutors.family_name = 'ᠬᠦᠩ' AND course_authors_and_tutors.personal_name = 'ᠮᠢᠩ';
+SELECT personal_name FROM students WHERE student_id IN (SELECT student_id FROM student_course_enrolment WHERE course_id IN (SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = 'Хүн')))
+SELECT personal_name, family_name FROM students WHERE student_id IN (SELECT student_id FROM student_course_enrolment WHERE course_id IN (SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = 'Сүн')));
+SELECT personal_name, family_name FROM students WHERE student_id IN ( SELECT student_id FROM student_course_enrolment WHERE course_id IN ( SELECT course_id FROM courses WHERE subject_id = ( SELECT subject_id FROM subjects WHERE subject_name = 'Сүн' ) ) );
+SELECT personal_name FROM students WHERE student_id IN ( SELECT student_id FROM student_course_enrolment WHERE course_id IN ( SELECT course_id FROM courses WHERE subject_id = ( SELECT subject_id FROM subjects LIMIT 1 ) ) );
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN subjects ON courses.subject_id = subjects.subject_id WHERE subjects.subject_id = 1;
+SELECT subjects.subject_name FROM subjects JOIN courses ON subjects.subject_id = courses.subject_id JOIN student_course_enrolment ON courses.course_id = student_course_enrolment.course_id WHERE student_course_enrolment.date_of_completion IS NOT NULL;
+SELECT subjects.subject_name FROM subjects JOIN courses ON subjects.subject_id = courses.subject_id JOIN student_course_enrolment ON courses.course_id = student_course_enrolment.course_id WHERE student_course_enrolment.date_of_completion IS NOT NULL;
+SELECT students.family_name, students.middle_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN course_authors_and_tutors ON courses.author_id = course_authors_and_tutors.author_id WHERE course_authors_and_tutors.family_name = 'Bugs Bunny';
+SELECT personal_name, middle_name FROM students WHERE student_id IN ( SELECT student_id FROM student_course_enrolment WHERE course_id IN ( SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = 'Mathematics') ) )
+SELECT personal_name, middle_name, family_name FROM students WHERE student_id IN ( SELECT student_id FROM student_course_enrolment WHERE course_id IN ( SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = '蒙古语') ) )
+SELECT subjects.subject_name FROM subjects INNER JOIN courses ON subjects.subject_id = courses.subject_id INNER JOIN student_course_enrolment ON courses.course_id = student_course_enrolment.course_id WHERE student_course_enrolment.date_of_completion IS NOT NULL;
+SELECT personal_name, family_name FROM course_authors_and_tutors WHERE author_tutor_atb = '教师' INTERSECT SELECT personal_name, family_name FROM course_authors_and_tutors WHERE author_tutor_atb = '作者';
+SELECT personal_name, middle_name, family_name FROM course_authors_and_tutors WHERE course_name = 'Дэгэт уншигчидын даяаны хууль, хууль зохицох боломжит шалгалт';
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id WHERE courses.subject_id = (SELECT subject_id FROM subjects WHERE subject_name = 'ᠠᠵᠢᠯᠯᠠᠬᠤ ᠰᠢᠰᠲ᠋ᠧᠮ') AND student_course_enrolment.date_of_completion IS NOT NULL ORDER BY student_course_enrolment.date_of_completion DESC;
+SELECT personal_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN subjects ON courses.subject_id = subjects.subject_id WHERE subjects.subject_name = 'ᠠᠵᠢᠯᠯᠠᠭ᠎ᠠ᠎ᠶ᠋ᠢᠨ ᠰᠢᠰᠲ᠋ᠧᠮ' AND courses.course_name = 'ᠳ᠋ᠠᠢᠲ᠋ᠠ᠎ᠶ᠋ᠢᠨ ᠪᠦᠲᠦᠴᠡ';
+SELECT personal_name, family_name FROM students WHERE student_id IN ( SELECT student_id FROM student_course_enrolment WHERE course_id IN ( SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = '蒙古语') ) )
+SELECT personal_name, family_name FROM students WHERE student_id IN ( SELECT student_course_enrolment.student_id FROM student_course_enrolment INNER JOIN courses ON student_course_enrolment.course_id = courses.course_id WHERE courses.subject_id = ( SELECT subject_id FROM subjects WHERE subject_name = 'ᠤᠯᠠᠨ ᠬᠢᠴᠢᠶᠡᠯ' ) )
+SELECT personal_name, middle_name, family_name FROM students WHERE student_id IN ( SELECT student_id FROM student_course_enrolment WHERE course_id IN ( SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = 'ᠤᠨ ᠬᠢᠴᠢᠶᠡᠯ') ) )
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN subjects ON courses.subject_id = subjects.subject_id WHERE subjects.subject_name = 'alinka zoykhaan noyon keliin zorigaahu bolyu neng'
+SELECT personal_name, family_name FROM students WHERE login_name = ' Bair ';
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN subjects ON courses.subject_id = subjects.subject_id WHERE subjects.subject_id = (SELECT subject_id FROM subjects WHERE subject_name = 'ᡁᠢ ᠬᠤᠸᠠ');
+SELECT personal_name, family_name FROM students WHERE login_name = 'ᠺᠣᠮᠫᠢᠶᠦ᠋ᠲ᠋ᠧᠷ᠎ ᠤᠨ ᠰᠢᠨᠵᠢᠯᠡᠬᠦ ᠤᠬᠠᠭᠠᠨ';
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN subjects ON courses.subject_id = subjects.subject_id WHERE subjects.subject_name = 'ᠺᠣᠮᠫᠢᠦ᠋ᠲ᠋ᠧᠷ᠎ᠦ᠋ᠨ ᠰᠢᠨᠵᠢᠯᠡᠬᠦ ᠤᠬᠠᠭᠠᠨ';
+SELECT subjects.subject_id FROM subjects INNER JOIN courses ON subjects.subject_id = courses.subject_id GROUP BY subjects.subject_id ORDER BY COUNT(courses.course_id) DESC LIMIT 1;
+SELECT personal_name, family_name FROM students WHERE student_id IN ( SELECT student_id FROM student_course_enrolment WHERE course_id IN ( SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects LIMIT 1) ) )
+SELECT login_name FROM course_authors_and_tutors WHERE author_id IN (SELECT author_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = '蒙古语'));
+SELECT subject_id FROM courses WHERE course_name = '数据库原理与应用';
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN subjects ON courses.subject_id = subjects.subject_id WHERE subjects.subject_name = '蒙古语' AND student_course_enrolment.date_of_completion IS NOT NULL;
+SELECT subjects.subject_name FROM subjects JOIN courses ON subjects.subject_id = courses.subject_id JOIN student_course_enrolment ON courses.course_id = student_course_enrolment.course_id WHERE student_course_enrolment.date_of_enrolment BETWEEN '2023-01-01' AND '2023-12-31';
+SELECT personal_name, family_name FROM students WHERE student_id IN (SELECT student_id FROM student_course_enrolment WHERE course_id IN (SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = ' Mongolian Language ')))
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id WHERE courses.subject_id = (SELECT subject_id FROM subjects WHERE subject_name = 'Хятад толь')
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN subjects ON courses.subject_id = subjects.subject_id WHERE subjects.subject_name = '蒙古语'
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN subjects ON courses.subject_id = subjects.subject_id WHERE subjects.subject_name = 'Java Programming'
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN subjects ON courses.subject_id = subjects.subject_id WHERE subjects.subject_name = '蒙古语' AND student_course_enrolment.date_of_completion IS NOT NULL ORDER BY students.date_of_registration ASC LIMIT 2;
+SELECT login_name FROM students WHERE student_id IN (SELECT student_id FROM student_course_enrolment WHERE course_id IN (SELECT course_id FROM courses WHERE subject_id IN (SELECT subject_id FROM subjects WHERE subject_name = '计算机科学')))
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN subjects ON courses.subject_id = subjects.subject_id WHERE subjects.subject_name = ' Mongolian Language ';
+SELECT personal_name, family_name FROM students WHERE student_id IN ( SELECT student_id FROM student_course_enrolment WHERE course_id IN ( SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = '蒙古语') ) )
+SELECT personal_name, family_name FROM students WHERE student_id IN (SELECT student_id FROM student_course_enrolment WHERE course_id IN (SELECT course_id FROM courses WHERE subject_id IN (SELECT subject_id FROM subjects WHERE subject_name = 'Өнгөрсөн')))
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN course_authors_and_tutors ON courses.author_id = course_authors_and_tutors.author_id WHERE course_authors_and_tutors.family_name = 'ᠦᠩᠭᠡᠷᠡᠵᠦ';
+SELECT personal_name, middle_name, family_name FROM students WHERE student_id IN ( SELECT student_id FROM student_course_enrolment WHERE course_id IN ( SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = '蒙古语') ) )
+SELECT personal_name, family_name FROM students WHERE login_name = 'ᠢᠯᠠᠭᠳᠠᠯ'
+SELECT students.family_name, students.middle_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN course_authors_and_tutors ON courses.author_id = course_authors_and_tutors.author_id WHERE course_authors_and_tutors.family_name = 'ᠰᠢᠶᠣᠣ' AND course_authors_and_tutors.middle_name = 'ᠲᠢᠶᠠᠨ';
+SELECT personal_name FROM students WHERE student_id IN (SELECT student_id FROM student_course_enrolment WHERE course_id IN (SELECT course_id FROM courses WHERE subject_id IN (SELECT subject_id FROM subjects WHERE subject_name = 'Сиёу тиyan')))
+SELECT personal_name, middle_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN course_authors_and_tutors ON courses.author_id = course_authors_and_tutors.author_tutor_atb WHERE course_authors_and_tutors.family_name = 'ᠬᠠᠨ' AND course_authors_and_tutors.personal_name = 'ᠵᠢᠶᠠ ᠮᠢᠩ';
+SELECT personal_name, middle_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN course_authors_and_tutors ON courses.author_id = course_authors_and_tutors.author_id WHERE course_authors_and_tutors.personal_name = 'ᠬᠠᠨ' AND course_authors_and_tutors.middle_name = 'ᠪᠣᠯᠤᠨ' AND courses.course_name = 'ᠵᠢᠶᠠ ᠮᠢᠩ';
+SELECT personal_name, family_name FROM students WHERE login_name IN ( SELECT login_name FROM student_course_enrolment WHERE course_id IN ( SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = 'Mathematics') ) )
+SELECT personal_name, family_name FROM students WHERE student_id IN (SELECT student_id FROM student_course_enrolment WHERE course_id IN (SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = 'Mongolian Language')))
+SELECT students.personal_name, students.middle_name, students.family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN subjects ON courses.subject_id = subjects.subject_id WHERE subjects.subject_name = 'ᠳᠠᠭ ᠪᠠᠭ᠎ᠠ᠎ᠳ᠋ᠠᠭᠠᠨ ᠬᠣᠶᠠᠷ ᠵᠦᠢᠯ᠎ ᠤᠨ ᠬᠢᠴᠢᠶᠡᠯ᠎ ᠤᠨ ᠨᠣᠮᠧᠷ';
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN subjects ON courses.subject_id = subjects.subject_id WHERE subjects.subject_name = 'ᠳᠤᠭᠠᠷᠯᠠᠯ' AND courses.course_description LIKE '%ᠤᠨ᠎ ᠳ᠋ᠤᠭᠠᠷᠯᠠᠯ ᠪᠣᠯᠤᠨ ᠬᠤᠪᠢ ᠬᠥᠮᠦᠨ%'
+SELECT personal_name FROM students WHERE student_id IN ( SELECT student_course_enrolment.student_id FROM student_course_enrolment INNER JOIN courses ON student_course_enrolment.course_id = courses.course_id WHERE courses.course_name = 'ᠶᠢᠨ ᠳᠤᠮᠳᠠᠯᠢᠭᠠᠨ' )
+SELECT personal_name, family_name FROM students WHERE student_id IN (SELECT student_id FROM student_course_enrolment WHERE course_id IN (SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = '蒙古语')))
+SELECT students.family_name, students.personal_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN course_authors_and_tutors ON courses.author_id = course_authors_and_tutors.author_id WHERE course_authors_and_tutors.middle_name = '钇' AND course_authors_and_tutors.family_name = 'ञ';
+SELECT personal_name, family_name FROM students WHERE student_id IN (SELECT student_id FROM student_course_enrolment WHERE course_id IN (SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = 'JAVA编程')))
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN subjects ON courses.subject_id = subjects.subject_id WHERE subjects.subject_name = '蒙古语'
+SELECT personal_name, family_name FROM students WHERE student_id IN ( SELECT student_id FROM student_course_enrolment WHERE course_id IN ( SELECT course_id FROM courses WHERE subject_id = (SELECT subject_id FROM subjects WHERE subject_name = '钇') ) )
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id WHERE courses.course_name = '蒙古语入门';
+SELECT personal_name, family_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN subjects ON courses.subject_id = subjects.subject_id WHERE subjects.subject_name = ' yakilun surugchidun kherelkhü dagsalakhü nerü ne yagü boi ';
+SELECT subjects.subject_name FROM subjects INNER JOIN courses ON subjects.subject_id = courses.subject_id INNER JOIN student_course_enrolment ON courses.course_id = student_course_enrolment.course_id WHERE student_course_enrolment.date_of_completion IS NOT NULL;
+SELECT family_name, subject_name FROM students JOIN student_course_enrolment ON students.student_id = student_course_enrolment.student_id JOIN courses ON student_course_enrolment.course_id = courses.course_id JOIN subjects ON courses.subject_id = subjects.subject_id WHERE students.middle_name = 'ᠶᠢᠴᠢᠶᠡᠯ᠎ ᠤᠨ';
+SELECT official_name FROM city WHERE city_id IN (SELECT host_city_id FROM farm_competition)
+SELECT farm.year FROM farm JOIN competition_record ON farm.farm_id = competition_record.farm_id JOIN farm_competition ON competition_record.competition_id = farm_competition.competition_id JOIN city ON farm_competition.host_city_id = city.city_id WHERE city.official_name = 'ulan_bator';
+SELECT farm.farm_id FROM farm INNER JOIN competition_record ON farm.farm_id = competition_record.farm_id WHERE competition_record.rank = 1;
+SELECT farm.farm_id FROM farm INNER JOIN competition_record ON farm.farm_id = competition_record.farm_id WHERE farm.year = 2022 AND competition_record.rank = 1;
+SELECT official_name FROM city WHERE city_id IN (SELECT host_city_id FROM farm_competition WHERE year = 2023) LIMIT 1;
+SELECT official_name FROM city WHERE city_id IN (SELECT host_city_id FROM farm_competition WHERE year = 2023) LIMIT 1;
+SELECT official_name FROM city WHERE city_id IN (SELECT host_city_id FROM farm_competition);
+SELECT competition_record.farm_id FROM farm JOIN competition_record ON farm.farm_id = competition_record.farm_id WHERE rank = 1;
+SELECT farm.farm_id FROM farm INNER JOIN competition_record ON farm.farm_id = competition_record.farm_id WHERE competition_record.rank = 1 LIMIT 1;
+SELECT farm.farm_id FROM farm INNER JOIN competition_record ON farm.farm_id = competition_record.farm_id WHERE farm.total_horses > 5000 AND competition_record.rank = 1;
+SELECT official_name FROM city WHERE city_id IN (SELECT host_city_id FROM farm_competition WHERE year = 2023)
+SELECT official_name FROM city JOIN farm_competition ON city.city_id = farm_competition.host_city_id JOIN competition_record ON farm_competition.competition_id = competition_record.competition_id JOIN farm ON competition_record.farm_id = farm.farm_id WHERE farm.year = 2023 AND farm.working_horses > farm.total_cattle ORDER BY farm.working_horses DESC LIMIT 1;
+SELECT city.official_name FROM city INNER JOIN farm_competition ON city.city_id = farm_competition.host_city_id;
+SELECT farm.farm_id FROM farm INNER JOIN competition_record ON farm.farm_id = competition_record.farm_id WHERE competition_record.rank = 1;
+SELECT city.city_id FROM city INNER JOIN farm_competition ON city.city_id = farm_competition.host_city_id WHERE farm_competition.year = (SELECT MAX(year) FROM farm_competition) LIMIT 1;
+SELECT city.name FROM city JOIN farm_competition ON city.city_id = farm_competition.host_city_id WHERE farm_competition.year = (SELECT MAX(year) FROM farm_competition);
+SELECT official_name FROM city JOIN farm_competition ON city.city_id = farm_competition.host_city_id WHERE competition_id IN ( SELECT competition_id FROM competition_record WHERE rank = 1 )
+SELECT city.city_id FROM city INNER JOIN farm_competition ON city.city_id = farm_competition.host_city_id WHERE farm_competition.year = 2013;
+SELECT official_name FROM city JOIN farm_competition ON city.city_id = farm_competition.host_city_id JOIN competition_record ON farm_competition.competition_id = competition_record.competition_id JOIN farm ON competition_record.farm_id = farm.farm_id WHERE farm.year = 2020 GROUP BY official_name ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT host_city_id FROM farm_competition WHERE year = (SELECT MAX(year) FROM farm_competition)
+SELECT official_name FROM city JOIN farm_competition ON city.city_id = farm_competition.host_city_id JOIN competition_record ON farm_competition.competition_id = competition_record.competition_id WHERE competition_record.rank = 1;
+SELECT official_name FROM city WHERE city_id IN (SELECT host_city_id FROM farm_competition)
+SELECT official_name FROM city JOIN farm_competition ON city.city_id = farm_competition.host_city_id WHERE farm_competition.year = 2023;
+SELECT official_name FROM city WHERE city_id IN (SELECT host_city_id FROM farm_competition WHERE year = 2020) LIMIT 1;
+SELECT official_name FROM city WHERE status = 'capital'
+SELECT host_city_id FROM farm_competition WHERE year = 1000;
+SELECT city.official_name FROM city JOIN farm_competition ON city.city_id = farm_competition.host_city_id GROUP BY city.official_name ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT official_name FROM city WHERE city_id IN (SELECT host_city_id FROM farm_competition) LIMIT 1;
+SELECT city.city_id FROM city JOIN farm_competition ON city.city_id = farm_competition.host_city_id WHERE farm_competition.year = (SELECT MAX(year) FROM farm_competition) LIMIT 1;
+SELECT official_name FROM city JOIN farm_competition ON farm_competition.host_city_id = city.city_id WHERE year = 2023;
+SELECT city.status FROM city JOIN farm_competition ON city.city_id = farm_competition.host_city_id JOIN competition_record ON farm_competition.competition_id = competition_record.competition_id JOIN farm ON competition_record.farm_id = farm.farm_id WHERE farm.total_horses > farm.total_cattle;
+SELECT official_name FROM city WHERE city_id IN (SELECT host_city_id FROM farm_competition)
+SELECT host_city_id FROM farm_competition WHERE year = (SELECT MAX(year) FROM farm_competition)
+SELECT official_name FROM city WHERE city_id IN (SELECT host_city_id FROM farm_competition WHERE year = 2023)
+SELECT official_name FROM city WHERE area_km_2 BETWEEN 1500 AND 5000 AND status = 'city';
+SELECT official_name FROM city WHERE area_km_2 BETWEEN 1500 AND 500;
+SELECT city.city_id FROM city JOIN farm_competition ON farm_competition.host_city_id = city.city_id JOIN competition_record ON competition_record.competition_id = farm_competition.competition_id JOIN farm ON farm.farm_id = competition_record.farm_id WHERE farm.total_horses > 1500 AND farm.total_cattle < 500 GROUP BY city.city_id HAVING COUNT(*) > 1;
+SELECT city.name FROM city JOIN farm_competition ON city.city_id = farm_competition.host_city_id JOIN competition_record ON farm_competition.competition_id = competition_record.competition_id JOIN farm ON competition_record.farm_id = farm.farm_id WHERE farm.total_horses > 1500 AND farm.total_cattle > 500 GROUP BY city.name;
+SELECT official_name FROM city WHERE city_id IN (SELECT host_city_id FROM farm_competition WHERE year = (SELECT MAX(year) FROM farm_competition)) LIMIT 1;
+SELECT official_name FROM city WHERE city_id IN (SELECT host_city_id FROM farm_competition WHERE year = (SELECT MAX(year) FROM farm_competition)) LIMIT 1;
+SELECT pilot FROM flight WHERE altitude > 200 LIMIT 1;
+SELECT DISTINCT operate_company.name FROM flight INNER JOIN operate_company ON flight.company_id = operate_company.id WHERE flight.altitude > 30000;
+SELECT airport.name FROM airport JOIN flight ON airport.id = flight.airport_id JOIN operate_company ON flight.company_id = operate_company.id WHERE operate_company.type = 'International' AND operate_company.principal_activities = 'Passenger and Cargo Transportation' GROUP BY airport.name HAVING COUNT(*) > 100;
+SELECT operate_company.name FROM operate_company WHERE operate_company.type = '国有控股'
+SELECT city FROM airport WHERE iata = 'ULN'
+SELECT operate_company.type FROM operate_company WHERE operate_company.id IN (SELECT company_id FROM flight WHERE flight.airport_id IN (SELECT id FROM airport WHERE airport.city = 'New York'))
+SELECT operate_company.name FROM operate_company WHERE operate_company.type = '国有' LIMIT 1;
+SELECT operate_company.name FROM operate_company JOIN flight ON operate_company.id = flight.company_id WHERE flight.date BETWEEN '2000-01-01' AND '2009-12-31' LIMIT 1;
+SELECT operate_company.name FROM operate_company JOIN flight ON operate_company.id = flight.company_id GROUP BY operate_company.name ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT iata FROM airport WHERE city = 'Ulaanbaatar';
+SELECT operate_company.name FROM operate_company WHERE operate_company.type = '《ᠪᠤᠤ ᠠᠨ ᠨᠢᠰᠬᠡᠯ ᠦᠨ ᠪᠠᠭᠤᠳᠠᠯ》' LIMIT 1;
+SELECT operate_company.name FROM operate_company INNER JOIN flight ON operate_company.id = flight.company_id GROUP BY operate_company.name ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT operate_company.name FROM operate_company WHERE operate_company.id IN (SELECT company_id FROM flight GROUP BY company_id HAVING COUNT(*) > 100) LIMIT 1;
+SELECT operate_company.name FROM operate_company WHERE operate_company.type = '国有控股' AND operate_company.group_equity_shareholding >= 50;
+SELECT operate_company.type FROM operate_company WHERE operate_company.id IN (SELECT company_id FROM flight WHERE flight.airport_id IN (SELECT id FROM airport WHERE city = '德尔勒赫特'))
+SELECT operate_company.name FROM operate_company WHERE operate_company.type = 'Airline'
+SELECT city FROM airport WHERE id IN (SELECT airport_id FROM flight GROUP BY airport_id ORDER BY COUNT(*) DESC LIMIT 1)
+SELECT city FROM airport ORDER BY city LIMIT 2;
+SELECT operate_company.name FROM flight JOIN operate_company ON flight.company_id = operate_company.id GROUP BY operate_company.name ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT manufacturer.name FROM furniture INNER JOIN furniture_manufacte ON furniture.furniture_id = furniture_manufacte.furniture_id INNER JOIN manufacturer ON furniture_manufacte.manufacturer_id = manufacturer.manufacturer_id WHERE furniture.num_of_component > 5 GROUP BY manufacturer.name ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT manufacturer.name FROM furniture INNER JOIN furniture_manufacte ON furniture.furniture_id = furniture_manufacte.furniture_id INNER JOIN manufacturer ON furniture_manufacte.manufacturer_id = manufacturer.manufacturer_id WHERE furniture.num_of_component > (SELECT AVG(num_of_component) FROM furniture) LIMIT 1;
+SELECT manufacturer.name FROM furniture INNER JOIN furniture_manufacte ON furniture.furniture_id = furniture_manufacte.furniture_id INNER JOIN manufacturer ON furniture_manufacte.manufacturer_id = manufacturer.manufacturer_id WHERE furniture.num_of_component = 2 LIMIT 1;
+SELECT manufacturer.name FROM furniture INNER JOIN furniture_manufacte ON furniture.furniture_id = furniture_manufacte.furniture_id INNER JOIN manufacturer ON furniture_manufacte.manufacturer_id = manufacturer.manufacturer_id WHERE furniture.market_rate > (SELECT AVG(market_rate) FROM furniture) LIMIT 10;
+SELECT manufacturer.name FROM furniture INNER JOIN furniture_manufacte ON furniture.furniture_id = furniture_manufacte.furniture_id INNER JOIN manufacturer ON furniture_manufacte.manufacturer_id = manufacturer.manufacturer_id WHERE furniture.num_of_component > 10 AND manufacturer.open_year < 2000;
+SELECT manufacturer.name FROM furniture_manufacte INNER JOIN manufacturer ON furniture_manufacte.manufacturer_id = manufacturer.manufacturer_id WHERE furniture_manufacte.furniture_id IN (SELECT furniture_id FROM furniture WHERE num_of_component > 5) LIMIT 1;
+SELECT manufacturer.name FROM manufacturer JOIN furniture_manufacte ON manufacturer.manufacturer_id = furniture_manufacte.manufacturer_id JOIN furniture ON furniture.furniture_id = furniture_manufacte.furniture_id WHERE furniture.num_of_component > 5 GROUP BY manufacturer.name HAVING COUNT(*) >= 3 ORDER BY COUNT(*) DESC;
+SELECT manufacturer.name FROM manufacturer INNER JOIN furniture_manufacte ON manufacturer.manufacturer_id = furniture_manufacte.manufacturer_id WHERE furniture_manufacte.price_in_dollar > (SELECT AVG(price_in_dollar) FROM furniture_manufacte)
+SELECT manufacturer.manufacturer_id FROM manufacturer INNER JOIN furniture_manufacte ON manufacturer.manufacturer_id = furniture_manufacte.manufacturer_id WHERE furniture_manufacte.price_in_dollar > (SELECT AVG(price_in_dollar) FROM furniture_manufacte) LIMIT 1;
+SELECT manufacturer.name FROM manufacturer INNER JOIN furniture_manufacte ON manufacturer.manufacturer_id = furniture_manufacte.manufacturer_id WHERE furniture_manufacte.price_in_dollar > 1000 AND furniture_manufacte.price_in_dollar < 2000;
+SELECT manufacturer.name FROM manufacturer INNER JOIN furniture_manufacte ON manufacturer.manufacturer_id = furniture_manufacte.manufacturer_id INNER JOIN furniture ON furniture_manufacte.furniture_id = furniture.furniture_id WHERE furniture.name = 'ᠶᠢᠯᠡᠳᠪᠦᠷᠢ᠎ᠶ᠋ᠢᠨ ᠳᠤᠮᠳᠠᠴᠢ' AND manufacturer.open_year <= 1990;
+SELECT name FROM manufacturer WHERE num_of_factories > (SELECT AVG(num_of_factories) FROM manufacturer)
+SELECT manufacturer_id FROM manufacturer WHERE num_of_factories > 5 AND open_year < 2000;
+SELECT manufacturer.name FROM furniture INNER JOIN furniture_manufacte ON furniture.furniture_id = furniture_manufacte.furniture_id INNER JOIN manufacturer ON furniture_manufacte.manufacturer_id = manufacturer.manufacturer_id WHERE furniture.num_of_component > 5 GROUP BY manufacturer.name ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT manufacturer.name FROM furniture_manufacte INNER JOIN manufacturer ON furniture_manufacte.manufacturer_id = manufacturer.manufacturer_id WHERE furniture_manufacte.price_in_dollar > (SELECT AVG(price_in_dollar) FROM furniture_manufacte);
+SELECT manufacturer.name FROM manufacturer INNER JOIN furniture_manufacte ON manufacturer.manufacturer_id = furniture_manufacte.manufacturer_id INNER JOIN furniture ON furniture_manufacte.furniture_id = furniture.furniture_id WHERE furniture.num_of_component BETWEEN 6 AND 10;
+SELECT visitor.name FROM visitor JOIN visit ON visitor.id = visit.visitor_id WHERE visit.total_spent > 500;
+SELECT visitor.age FROM visitor JOIN visit ON visitor.id = visit.visitor_id JOIN museum ON visit.museum_id = museum.museum_id WHERE museum.num_of_staff > 4 AND visit.total_spent > 500;
+SELECT COUNT(*) FROM visit;
+SELECT visitor.age FROM visitor JOIN visit ON visitor.id = visit.visitor_id JOIN museum ON visit.museum_id = museum.museum_id WHERE museum.num_of_staff = 4 AND visit.total_spent > 100;
+SELECT name FROM museum ORDER BY num_of_staff DESC LIMIT 1;
+SELECT visitor.name FROM visitor JOIN visit ON visitor.id = visit.visitor_id JOIN museum ON visit.museum_id = museum.museum_id WHERE museum.num_of_staff > 50 AND visit.total_spent > 100 ORDER BY visit.total_spent DESC LIMIT 1;
+SELECT name FROM museum WHERE num_of_staff = (SELECT MAX(num_of_staff) FROM museum);
+SELECT museum.museum_id FROM museum WHERE museum.open_year = 2010;
+SELECT visitor.name FROM visitor JOIN visit ON visitor.id = visit.visitor_id JOIN museum ON visit.museum_id = museum.museum_id WHERE museum.num_of_staff > 50 AND visitor.level_of_membership = 'premium' ORDER BY visit.total_spent DESC LIMIT 1;
+SELECT visitor.name FROM visitor JOIN visit ON visitor.id = visit.visitor_id JOIN museum ON visit.museum_id = museum.museum_id WHERE museum.open_year = (SELECT MAX(open_year) FROM museum);
+SELECT visitor.level_of_membership FROM visitor JOIN visit ON visitor.id = visit.visitor_id GROUP BY visitor.level_of_membership ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT museum.museum_id FROM museum JOIN visit ON museum.museum_id = visit.museum_id GROUP BY museum.museum_id ORDER BY SUM(visit.total_spent) DESC LIMIT 1;
+SELECT visitor.name FROM visitor JOIN visit ON visitor.id = visit.visitor_id JOIN museum ON visit.museum_id = museum.museum_id WHERE museum.num_of_staff > 50 AND visitor.level_of_membership = 'premium' ORDER BY visit.total_spent DESC LIMIT 1;
+SELECT visitor.name FROM visit JOIN visitor ON visit.visitor_id = visitor.id WHERE visit.total_spent > (SELECT AVG(total_spent) FROM visit)
+SELECT name FROM museum ORDER BY num_of_staff DESC LIMIT 1;
+SELECT COUNT(*) FROM visit WHERE visit.museum_id IN (SELECT museum_id FROM museum WHERE name = '2009 ᠣᠨ ᠡᠴᠠ ᠡᠮᠦᠨ᠎ᠡ ᠨᠡᠭᠡᠭᠡᠭᠰᠡᠨ ᠮᠦᠽᠧᠢ᠎ᠶ᠋ᠢ ᠲᠣᠭᠣᠷᠢᠨ ᠦᠵᠡᠬᠦ ᠪᠥᠭᠡᠳ ᠪᠠᠰᠠ') AND visit.num_of_ticket > 0 AND visit.total_spent > 0 UNION SELECT COUNT(*) FROM visit WHERE visit.museum_id IN (SELECT museum_id FROM museum WHERE name = '2011 ᠣᠨ ᠡᠴᠠ ᠬᠣᠢᠰᠢ ᠨᠡᠭᠡᠭᠡᠯᠲᠡ᠎ᠲᠡᠢ ᠮᠦᠽᠧᠢ᠎ᠶ᠋ᠢ ᠲᠣᠭᠣᠷᠢᠨ ᠦᠵᠡᠬᠦ ᠭᠡᠰᠡᠨ ᠵᠢᠭᠤᠯᠴᠢᠳ᠎ ᠤᠨ ᠨᠡᠷ᠎ᠡ ᠨᠢ ᠶᠠᠭᠤ ᠪᠣᠢ');
+SELECT museum.name FROM museum JOIN visit ON museum.museum_id = visit.museum_id GROUP BY museum.name ORDER BY SUM(visit.total_spent) DESC LIMIT 1;
+SELECT COUNT(*) FROM visit WHERE visit_date BETWEEN '2008-01-01' AND '2013-12-31';
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = 'Өдүр Эндр'));
+SELECT liked_id FROM likes WHERE student_id IN (SELECT id FROM highschooler WHERE grade = 10) AND liked_id != student_id;
+SELECT DISTINCT highschooler.id FROM highschooler JOIN likes ON highschooler.id = likes.student_id JOIN friend ON highschooler.id = friend.student_id WHERE likes.liked_id IN (SELECT friend_id FROM friend WHERE friend.student_id = highschooler.id);
+SELECT liked_id FROM likes WHERE student_id IN (SELECT id FROM highschooler WHERE grade = '10th') INTERSECT SELECT friend_id FROM friend WHERE student_id IN (SELECT id FROM highschooler WHERE grade = '10th');
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = 'БүхэлдЭр') INTERSECT SELECT friend_id FROM friend WHERE student_id = (SELECT id FROM highschooler WHERE name = 'БүхэлдЭр'));
+SELECT liked_id FROM likes WHERE student_id IN (SELECT id FROM highschooler WHERE grade = 10) AND liked_id != student_id;
+SELECT liked_id FROM likes WHERE student_id IN (SELECT id FROM highschooler WHERE grade = 'ᠰᠢᠶᠣᠣ ᠵᠢᠶᠦ᠋ᠨ') INTERSECT SELECT friend_id FROM friend WHERE student_id IN (SELECT id FROM highschooler WHERE grade = 'ᠰᠢᠶᠣᠣ ᠵᠢᠶᠦ᠋ᠨ');
+SELECT liked_id FROM likes WHERE student_id IN (SELECT id FROM highschooler WHERE grade = '10th') INTERSECT SELECT friend_id FROM friend WHERE student_id IN (SELECT id FROM highschooler WHERE grade = '10th');
+SELECT liked_id FROM likes WHERE student_id IN (SELECT id FROM highschooler WHERE grade = 10) AND liked_id != id;
+SELECT liked_id FROM likes WHERE student_id IN (SELECT id FROM highschooler WHERE grade = 10) AND liked_id != (SELECT id FROM highschooler WHERE grade = 10);
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = 'ᠰᠢᠶᠤᠤ ᠵᠢᠶᠦ᠋ᠨ')) AND grade = (SELECT grade FROM highschooler WHERE name = 'ᠰᠢᠶᠤᠤ ᠵᠢᠶᠦ᠋ᠨ');
+SELECT liked_id FROM likes WHERE student_id IN (SELECT id FROM highschooler WHERE grade = '10') INTERSECT SELECT friend_id FROM friend WHERE student_id IN (SELECT id FROM highschooler WHERE grade = '10');
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = '9年级10班的学生')) AND id NOT IN (SELECT friend_id FROM friend WHERE student_id = (SELECT id FROM highschooler WHERE name = '9年级10班的学生'));
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT friend_id FROM friend WHERE student_id = 10)) AND id != 10 LIMIT 1;
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes) AND id IN (SELECT friend_id FROM friend);
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = 'Бүрэн')) AND id != (SELECT id FROM highschooler WHERE name = 'Бүрэн')
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = 'Али')) INTERSECT SELECT name FROM highschooler WHERE id IN (SELECT friend_id FROM friend WHERE student_id = (SELECT id FROM highschooler WHERE name = 'Али'));
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes INTERSECT SELECT friend_id FROM friend)
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT friend_id FROM friend WHERE student_id = (SELECT id FROM highschooler WHERE name = 'ᠪᠠᠢᠬᠤ'))) AND id != (SELECT id FROM highschooler WHERE name = 'ᠪᠠᠢᠬᠤ') LIMIT 4;
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = 'ᠠᠯᠢ ᠣᠨ᠎ᠳ᠋ᠤ᠌'));
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT friend_id FROM friend WHERE student_id = '特定学生ID')) AND grade = (SELECT grade FROM highschooler WHERE id = '特定学生ID');
+SELECT I'm sorry, but your question seems to be incomplete. Please provide the full query request so I can help you form the appropriate SQLite SQL query.
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT friend_id FROM friend WHERE student_id = (SELECT id FROM highschooler WHERE name = '嫄明')));
+SELECT liked_id FROM likes WHERE student_id IN (SELECT id FROM highschooler WHERE grade = '10th') INTERSECT SELECT friend_id FROM friend WHERE student_id IN (SELECT id FROM highschooler WHERE grade = '10th');
+SELECT liked_id FROM likes WHERE student_id IN (SELECT id FROM highschooler WHERE grade = '10th') INTERSECT SELECT friend_id FROM friend WHERE student_id IN (SELECT id FROM highschooler WHERE grade = '10th');
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = 'ᠳᠤᠮᠳᠠᠳᠤ᠎ᠶ᠋ᠢᠨ ᠰᠤᠷᠤᠭᠴᠢ᠎ᠶ᠋ᠢᠨ'));
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id IN (SELECT friend_id FROM friend WHERE student_id = 3)) AND grade = 12;
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT friend_id FROM friend WHERE student_id = 'Өлөн Найжат'));
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = 'Сайхан')) AND grade = (SELECT grade FROM highschooler WHERE name = 'Сайхан');
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = 'ᠰᠢᠶᠤᠤ ᠵᠢᠶᠦᠦᠨ')) AND grade = (SELECT grade FROM highschooler WHERE name = 'ᠰᠢᠶᠤᠤ ᠵᠢᠶᠦᠦᠨ');
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = 'ᠰᠢᠶᠤᠤ ᠵᠢᠶᠦ᠋ᠨ'));
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT friend_id FROM friend WHERE student_id = 'ᠰᠢᠶᠤᠤ ᠵᠢᠶᠦ᠋ᠨ'));
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT friend_id FROM friend WHERE student_id = (SELECT id FROM highschooler WHERE name = 'Бүхэлайлах')));
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = '那吉雅')) AND grade = (SELECT grade FROM highschooler WHERE name = '那吉雅');
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = 'ᠠᠯᠢᠪᠠ'));
+SELECT liked_id FROM likes WHERE student_id IN (SELECT id FROM highschooler WHERE grade = '10') INTERSECT SELECT friend_id FROM friend WHERE student_id IN (SELECT id FROM highschooler WHERE grade = '10');
+SELECT DISTINCT highschooler.name FROM highschooler INNER JOIN likes ON highschooler.id = likes.student_id WHERE likes.liked_id IN (SELECT friend_id FROM friend WHERE student_id = highschooler.id)
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT friend_id FROM friend WHERE student_id = 'Байху'))
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = 'Бүхэл буудлын хөмүүн'));
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = 'Төгрөг Найжатай')) AND grade = (SELECT grade FROM highschooler WHERE name = 'Төгрөг Найжатай');
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = 'ТӨМӨРӨН')) AND grade = (SELECT grade FROM highschooler WHERE name = 'ТӨМӨРӨН');
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes) INTERSECT SELECT name FROM highschooler WHERE id IN (SELECT friend_id FROM friend);
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = 'Дурд') INTERSECT SELECT friend_id FROM friend WHERE student_id = (SELECT id FROM highschooler WHERE name = 'Дурд'));
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes) INTERSECT SELECT name FROM highschooler WHERE id IN (SELECT friend_id FROM friend);
+SELECT liked_id FROM likes WHERE student_id IN (SELECT id FROM highschooler WHERE grade = '10') INTERSECT SELECT friend_id FROM friend WHERE student_id IN (SELECT id FROM highschooler WHERE grade = '10');
+SELECT liked_id FROM likes WHERE student_id IN (SELECT friend_id FROM friend WHERE student_id = 1) AND liked_id != 1;
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = 'ᠠᠳᠠᠭ᠎ᠲᠠᠭᠠᠨ'));
+SELECT liked_id FROM likes WHERE student_id IN (SELECT id FROM highschooler WHERE grade = 12) INTERSECT SELECT friend_id FROM friend WHERE student_id IN (SELECT id FROM highschooler WHERE grade = 12);
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = 'ANTLR')) AND grade = 12;
+SELECT liked_id FROM likes WHERE student_id IN (SELECT id FROM highschooler WHERE grade = 5) AND liked_id != id LIMIT 2;
+SELECT liked_id FROM likes WHERE student_id IN (SELECT id FROM highschooler WHERE grade = '10') INTERSECT SELECT friend_id FROM friend WHERE student_id IN (SELECT id FROM highschooler WHERE grade = '10');
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes) AND id NOT IN (SELECT friend_id FROM friend WHERE student_id IN (SELECT liked_id FROM likes));
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = 'Бои Бүхэй')) AND id != (SELECT id FROM highschooler WHERE name = 'Бои Бүхэй')
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = 'Naizaitai')) AND id != (SELECT id FROM highschooler WHERE name = 'Naizaitai');
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id = (SELECT id FROM highschooler WHERE name = 'Naizai')) AND id != (SELECT id FROM highschooler WHERE name = 'Naizai');
+SELECT name FROM highschooler WHERE id IN (SELECT liked_id FROM likes WHERE student_id IN (SELECT friend_id FROM friend WHERE student_id = (SELECT id FROM highschooler WHERE name = '钇幂')));
+SELECT host.name FROM host JOIN party_host ON host.host_id = party_host.host_id JOIN party ON party.party_id = party_host.party_id WHERE party.party_theme = 'birthday'
+SELECT name FROM host WHERE host_id IN (SELECT host_id FROM party_host WHERE party_id IN (SELECT party_id FROM party WHERE party_theme = 'birthday'));
+SELECT host.name FROM host JOIN party_host ON host.host_id = party_host.host_id JOIN party ON party_host.party_id = party.party_id WHERE party.number_of_hosts > 1 AND party.location = 'Mongolia';
+SELECT host.name FROM host JOIN party_host ON host.host_id = party_host.host_id JOIN party ON party_host.party_id = party.party_id WHERE party.number_of_hosts > 1 AND party.first_year >= 2000 AND party.last_year <= 2010;
+SELECT host.name FROM host JOIN party_host ON host.host_id = party_host.host_id JOIN party ON party_host.party_id = party.party_id WHERE party.location = 'ᠤ ᠭᠣᠣᠯ ᠰᠡᠳᠦᠪ ᠪᠠ ᠭᠠᠵᠠᠷ' LIMIT 1;
+SELECT name FROM host WHERE host_id IN (SELECT host_id FROM party_host WHERE party_id IN (SELECT party_id FROM party WHERE location = 'Москва'));
+SELECT host.name FROM host JOIN party_host ON host.host_id = party_host.host_id JOIN party ON party_host.party_id = party.party_id WHERE party.location = 'ᠬᠠᠪᠤᠷ᠎ ᠤᠨ ᠤᠯᠠᠷᠢᠯ' AND party.number_of_hosts > 1;
+SELECT host.name FROM host INNER JOIN party_host ON host.host_id = party_host.host_id INNER JOIN party ON party_host.party_id = party.party_id WHERE party.party_theme = 'ᠬᠠᠪᠤᠷ᠎ ᠤᠨ ᠤᠯᠠᠷᠢᠯ' AND party.location = 'ᠰᠢᠨᠵᠢᠯᠡᠬᠦ ᠤᠬᠠᠭᠠᠨ ᠮᠡᠷᠭᠡᠵᠢᠯ';
+SELECT host.name FROM host JOIN party_host ON host.host_id = party_host.host_id JOIN party ON party_host.party_id = party.party_id WHERE party.party_theme = 'Čügėlān ērhūlēgčid buiriyi-yiṅ ᠲᠡᠭᠰᠢᠳᠬᠡᠭᠰᠡᠨ' AND party.first_year <= 2023 AND party.last_year >= 2023;
+SELECT host.name FROM host JOIN party_host ON host.host_id = party_host.host_id JOIN party ON party.party_id = party_host.party_id WHERE party.party_theme = 'Čūğlāɣan ērkhilēġčid buři-y-yi ṭegsidegsen toɣa-y-yi bodohu hā'
+SELECT host.name FROM host JOIN party_host ON host.host_id = party_host.host_id JOIN party ON party_host.party_id = party.party_id WHERE party.party_theme = '生日派对' AND party.last_year = 2020;
+SELECT host.nationality FROM party_host JOIN host ON party_host.host_id = host.host_id WHERE party_host.is_main_in_charge = 1;
+SELECT host.name FROM host INNER JOIN party_host ON host.host_id = party_host.host_id INNER JOIN party ON party_host.party_id = party.party_id WHERE party.party_theme = 'birthday' AND party.location = 'New York'
+SELECT host.name FROM host INNER JOIN party_host ON host.host_id = party_host.host_id INNER JOIN party ON party_host.party_id = party.party_id WHERE party.last_year = (SELECT MAX(last_year) FROM party) LIMIT 1;
+SELECT host.name FROM host JOIN party_host ON host.host_id = party_host.host_id JOIN party ON party_host.party_id = party.party_id WHERE party.last_year = (SELECT MAX(last_year) FROM party);
+SELECT host.name FROM host JOIN party_host ON host.host_id = party_host.host_id JOIN party ON party_host.party_id = party.party_id WHERE party.party_theme = 'ᠠᠯᠢ ᠤᠯᠤᠰ ᠨᠢ ᠬᠠᠮᠤᠭ ᠣᠯᠠᠨ ᠲᠣᠭᠠᠨ ᠤ ᠬᠥᠲᠥᠯᠦᠭᠴᠢ ᠪᠠᠢᠬᠤ ᠪᠣᠢ' AND party.first_year <= 2023 AND party.last_year >= 2023;
+SELECT party_theme FROM party WHERE first_year = 35 AND last_year = 45;
+SELECT host.name FROM host JOIN party_host ON host.host_id = party_host.host_id JOIN party ON party_host.party_id = party.party_id WHERE host.age > 45 AND party.last_year BETWEEN 2015 AND 2025;
+SELECT host.name FROM host JOIN party_host ON host.host_id = party_host.host_id JOIN party ON party_host.party_id = party.party_id WHERE party.party_theme = 'Čūglomer u gool sedüb boluun khetelgüčiin nerėeėyi ileregüleñ' AND party.last_year = 2023;
+SELECT host.name FROM host JOIN party_host ON host.host_id = party_host.host_id JOIN party ON party_host.party_id = party.party_id WHERE party.last_year = 2020 AND party.first_year = 2020;
+SELECT host.nationality FROM host INNER JOIN party_host ON host.host_id = party_host.host_id INNER JOIN party ON party_host.party_id = party.party_id WHERE party.party_theme = 'birthday' AND party.first_year BETWEEN 2000 AND 2010;
+SELECT host_id FROM host WHERE nationality = 'Čuɣalagaŋ baldan-u bairi baitelügči-yin ner-eė-yi ᠡрижү гарганаа хөрээ и хөтөлбөрийн нас улаан байгаа';
+SELECT host.name FROM host JOIN party_host ON host.host_id = party_host.host_id JOIN party ON party_host.party_id = party.party_id WHERE party.number_of_hosts >= 50 AND party.last_year - party.first_year <= 2;
+SELECT host.name FROM host JOIN party_host ON host.host_id = party_host.host_id JOIN party ON party_host.party_id = party.party_id WHERE party.number_of_hosts > 50 LIMIT 50;
+SELECT host.name FROM host JOIN party_host ON host.host_id = party_host.host_id JOIN party ON party_host.party_id = party.party_id WHERE party.last_year - party.first_year >= 20;
+SELECT host.nationality FROM host INNER JOIN party_host ON host.host_id = party_host.host_id INNER JOIN party ON party_host.party_id = party.party_id WHERE party.last_year - party.first_year >= 20 GROUP BY host.nationality HAVING COUNT(*) > 1;
+SELECT host.nationality FROM host INNER JOIN party_host ON host.host_id = party_host.host_id INNER JOIN party ON party_host.party_id = party.party_id WHERE party.party_theme = 'Хамаг ахамад хөтөлгөөний нэр' AND party.location = 'Болуны олсуудын улаанбаатар хот'
+SELECT host.nationality FROM host INNER JOIN party_host ON host.host_id = party_host.host_id INNER JOIN party ON party_host.party_id = party.party_id WHERE party.party_theme = 'birthday' AND party.first_year <= 2000 AND party.last_year >= 2000;
+SELECT host.name FROM host JOIN party_host ON host.host_id = party_host.host_id JOIN party ON party_host.party_id = party.party_id WHERE party.last_year = (SELECT MAX(last_year) FROM party);
+SELECT host.name FROM host JOIN party_host ON host.host_id = party_host.host_id JOIN party ON party_host.party_id = party.party_id WHERE party.last_year = (SELECT MAX(last_year) FROM party);
+SELECT district FROM market ORDER BY ranking DESC LIMIT 1;
+SELECT name FROM phone WHERE phone_id IN ( SELECT phone_id FROM phone_market WHERE market_id IN ( SELECT market_id FROM market WHERE ranking = 1 ) ) LIMIT 1;
+SELECT phone.name FROM phone JOIN phone_market ON phone.phone_id = phone_market.phone_id JOIN market ON market.market_id = phone_market.market_id WHERE market.district = 'district_name' ORDER BY phone.price DESC LIMIT 1;
+SELECT name FROM phone WHERE memory_in_g = 32 AND price <= 32000;
+SELECT phone.name FROM phone JOIN phone_market ON phone.phone_id = phone_market.phone_id JOIN market ON phone_market.market_id = market.market_id WHERE market.district = 'ᠳᠤᠮᠳᠠᠲᠤ ᠤᠯᠤᠰ ᠤᠨ ᠨᠢᠭᠡᠳᠦᠮᠡᠯ ᠬᠣᠯᠪᠣᠭ᠎ᠠ' AND market.ranking <= ( SELECT ranking FROM market WHERE district = 'ᠳᠤᠮᠳᠠᠲᠤ ᠤᠯᠤᠰ ᠤᠨ ᠰᠢᠯᠵᠢᠮᠡᠯ ᠬᠣᠯᠪᠣᠭ᠎ᠠ' )
+SELECT DISTINCT phone.name FROM phone JOIN phone_market ON phone.phone_id = phone_market.phone_id JOIN market ON market.market_id = phone_market.market_id WHERE market.district = 'district_name' AND phone.memory_in_g > 128 ORDER BY phone.price DESC LIMIT 1;
+SELECT name FROM phone JOIN phone_market ON phone.phone_id = phone_market.phone_id JOIN market ON phone_market.market_id = market.market_id WHERE market.ranking = 1 AND phone.memory_in_g = (SELECT MAX(memory_in_g) FROM phone) AND phone.price <= (SELECT AVG(price) FROM phone);
+SELECT market.district FROM market JOIN phone_market ON market.market_id = phone_market.market_id JOIN phone ON phone.phone_id = phone_market.phone_id WHERE phone.memory_in_g > 128 AND phone.price < 500;
+SELECT phone.name FROM phone JOIN phone_market ON phone.phone_id = phone_market.phone_id JOIN market ON phone_market.market_id = market.market_id WHERE market.num_of_employees = 32 AND phone.price > (SELECT AVG(price) FROM phone)
+SELECT district FROM market JOIN phone_market ON market.market_id = phone_market.market_id JOIN phone ON phone_market.phone_id = phone.phone_id WHERE phone.memory_in_g = 128 AND phone.carrier = 'Verizon' AND phone.price < 1000 GROUP BY district HAVING COUNT(*) > 1 ORDER BY COUNT(*) DESC;
+SELECT phone.name FROM phone JOIN phone_market ON phone.phone_id = phone_market.phone_id JOIN market ON phone_market.market_id = market.market_id WHERE market.num_of_employees > 50 AND phone.memory_in_g > 128;
+SELECT phone.memory_in_g FROM phone JOIN phone_market ON phone.phone_id = phone_market.phone_id JOIN market ON phone_market.market_id = market.market_id WHERE market.num_of_employees > 50 AND market.district = 'district_name' ORDER BY phone.price DESC LIMIT 1;
+SELECT district FROM market INNER JOIN phone_market ON market.market_id = phone_market.market_id INNER JOIN phone ON phone.phone_id = phone_market.phone_id WHERE phone.memory_in_g > 16 AND phone.price < 500 GROUP BY district HAVING COUNT(*) >= 3;
+SELECT name FROM phone WHERE memory_in_g >= 2000 AND price <= 500;
+SELECT phone.memory_in_g, market.district FROM phone JOIN phone_market ON phone.phone_id = phone_market.phone_id JOIN market ON phone_market.market_id = market.market_id WHERE phone.price < 500 AND market.num_of_employees > 30;
+SELECT attribute_name FROM attribute_definitions WHERE attribute_data_type = 'text';
+SELECT attribute_name FROM attribute_definitions WHERE attribute_data_type = 'text';
+SELECT attribute_name FROM attribute_definitions WHERE attribute_id IN ( SELECT attribute_value FROM catalog_contents_additional_attributes WHERE catalog_level_number = 3 )
+SELECT catalog_entry_name FROM catalog_contents WHERE price_in_dollars > 3 AND catalog_level_number = 3;
+SELECT catalog_entry_name FROM catalog_contents WHERE catalog_entry_name = 'ᠨᠣᠭᠣᠭᠠᠨ';
+SELECT catalog_entry_name FROM catalog_contents WHERE catalog_entry_name = 'ᠨᠣᠭᠣᠭᠠᠨ';
+SELECT attribute_name FROM attribute_definitions WHERE attribute_data_type = 'text';
+SELECT catalog_publisher FROM catalogs LIMIT 5;
+SELECT attribute_name FROM attribute_definitions WHERE attribute_data_type = 'text';
+SELECT catalog_entry_name FROM catalog_contents WHERE catalog_entry_name LIKE '%ᠰᠢᠶᠣᠤ ᠭᠠᠩ%' LIMIT 1;
+SELECT catalog_entry_name FROM catalog_contents WHERE price_in_dollars = (SELECT MAX(price_in_dollars) FROM catalog_contents) LIMIT 1;
+SELECT attribute_name FROM attribute_definitions WHERE attribute_data_type = 'text';
+SELECT catalog_publisher FROM catalogs LIMIT 5;
+SELECT catalog_publisher FROM catalogs LIMIT 5;
+SELECT catalog_publisher FROM catalogs LIMIT 1;
+SELECT catalog_entry_name FROM catalog_contents WHERE catalog_level_number = (SELECT MAX(catalog_level_number) FROM catalog_contents) LIMIT 1;
+SELECT DISTINCT catalog_contents.price_in_dollars FROM catalog_contents JOIN catalog_contents_additional_attributes ON catalog_contents.catalog_entry_id = catalog_contents_additional_attributes.catalog_entry_id JOIN catalog_structure ON catalog_contents.catalog_level_number = catalog_structure.catalog_level_number JOIN catalogs ON catalog_structure.catalog_id = catalogs.catalog_id WHERE catalogs.catalog_publisher = '᠎ᠳ᠋ᠣᠯᠯᠠᠷ' AND catalog_contents_additional_attributes.attribute_name = '᠎ᠳ᠋ᠣᠯᠯᠠᠷ'
+SELECT DISTINCT price_in_dollars FROM catalog_contents WHERE catalog_entry_id IN (SELECT catalog_entry_id FROM catalog_contents_additional_attributes WHERE attribute_value = '᠎ᠳ᠋ᠣᠯᠯᠠᠷ') AND catalog_level_number = (SELECT catalog_level_number FROM catalog_structure WHERE catalog_level_name = '᠎ᠳ᠋ᠣᠯᠯᠠᠷ ᠵᠦᠢᠯ');
+SELECT catalog_entry_name FROM catalog_contents WHERE price_in_dollars = (SELECT MAX(price_in_dollars) FROM catalog_contents) LIMIT 1;
+SELECT catalog_entry_name FROM catalog_contents WHERE price_in_dollars = (SELECT MAX(price_in_dollars) FROM catalog_contents) LIMIT 1;
+SELECT DISTINCT catalog_publisher FROM catalogs WHERE catalog_id IN (SELECT catalog_id FROM catalog_structure WHERE catalog_level_name = 'Бои бүхэй ѳүлдхүн');
+SELECT catalog_publisher FROM catalogs LIMIT 1;
+SELECT attribute_name FROM attribute_definitions WHERE attribute_data_type = 'text';
+SELECT catalog_publisher FROM catalogs LIMIT 1;
+SELECT catalog_publisher FROM catalogs WHERE catalogs.catalog_id IN ( SELECT catalog_structure.catalog_id FROM catalog_contents INNER JOIN catalog_structure ON catalog_contents.catalog_level_number = catalog_structure.catalog_level_number GROUP BY catalog_contents.catalog_entry_id HAVING SUM(product_stock_number) > 0 )
+SELECT catalog_publisher FROM catalogs LIMIT 1;
+SELECT catalog_entry_name FROM catalog_contents WHERE price_in_dollars > 2;
+SELECT catalogs.catalog_publisher FROM catalogs INNER JOIN catalog_contents ON catalogs.catalog_id = catalog_contents.catalog_id WHERE catalog_contents.catalog_level_number = 2 LIMIT 1;
+SELECT attribute_name FROM attribute_definitions WHERE attribute_data_type = 'text';
+SELECT attribute_name FROM attribute_definitions WHERE attribute_data_type = 'text'
+SELECT catalog_publisher FROM catalogs LIMIT 5;
+SELECT attribute_name FROM attribute_definitions WHERE attribute_data_type = 'text' LIMIT 3 OFFSET 5;
+SELECT attribute_value FROM catalog_contents_additional_attributes WHERE attribute_id = 0 AND catalog_level_number = 0;
+SELECT catalog_entry_name FROM catalog_contents WHERE price_in_dollars = (SELECT MAX(price_in_dollars) FROM catalog_contents) LIMIT 1;
+SELECT catalog_publisher FROM catalogs LIMIT 1;
+SELECT catalog_contents.price_in_dollars FROM catalog_contents JOIN catalog_contents_additional_attributes ON catalog_contents.catalog_entry_id = catalog_contents_additional_attributes.catalog_entry_id JOIN catalog_structure ON catalog_contents.catalog_level_number = catalog_structure.catalog_level_number AND catalog_contents_additional_attributes.catalog_level_number = catalog_structure.catalog_level_number JOIN catalogs ON catalog_structure.catalog_id = catalogs.catalog_id WHERE catalog_contents.price_in_dollars = 700;
+SELECT catalog_entry_name FROM catalog_contents WHERE price_in_dollars = (SELECT MAX(price_in_dollars) FROM catalog_contents);
+SELECT catalog_name FROM catalogs JOIN catalog_structure ON catalogs.catalog_id = catalog_structure.catalog_id WHERE catalog_level_name = '蒙古语图书分类';
+SELECT attribute_name FROM attribute_definitions WHERE attribute_id IN ( SELECT attribute_id FROM catalog_contents_additional_attributes WHERE catalog_entry_id IN ( SELECT catalog_entry_id FROM catalog_contents WHERE catalog_level_number = 1 ) )
+SELECT attribute_name FROM attribute_definitions WHERE attribute_data_type = 'text';
+SELECT catalog_entry_name FROM catalog_contents WHERE price_in_dollars > 8 ORDER BY price_in_dollars DESC LIMIT 1;
+SELECT product_stock_number FROM catalog_contents WHERE price_in_dollars > 8 AND catalog_level_number = 3;
+SELECT name FROM scientists WHERE ssn IN (SELECT scientist FROM assignedto WHERE project IN (SELECT code FROM projects WHERE hours > 100));
+SELECT name FROM scientists WHERE ssn IN (SELECT scientist FROM assignedto WHERE project IN (SELECT code FROM projects WHERE hours > 500));
+SELECT scientists.name FROM scientists JOIN assignedto ON scientists.name = assignedto.scientist WHERE assignedto.project IN ( SELECT projects.code FROM projects WHERE projects.name = 'BOVE_BUHEI_TUSULUN_YERUNGEI_CH_NI_ERJIZUGE_HARGA' );
+SELECT scientists.name FROM scientists INNER JOIN assignedto ON scientists.name = assignedto.scientist GROUP BY scientists.name HAVING COUNT(assignedto.project) > 1;
+SELECT scientists.name FROM scientists JOIN assignedto ON scientists.name = assignedto.scientist JOIN projects ON assignedto.project = projects.name WHERE projects.hours > 500;
+SELECT scientist FROM assignedto INTERSECT SELECT name FROM scientists;
+SELECT scientists.name FROM scientists JOIN assignedto ON scientists.name = assignedto.scientist WHERE assignedto.project IN ( SELECT projects.code FROM projects WHERE projects.name = 'Dalbu project' )
+SELECT scientists.name FROM scientists JOIN assignedto ON scientists.name = assignedto.scientist WHERE assignedto.project IN ( SELECT projects.code FROM projects WHERE projects.hours > 500 )
+SELECT scientists.name FROM scientists JOIN assignedto ON scientists.name = assignedto.scientist WHERE assignedto.project IN ( SELECT projects.code FROM projects WHERE projects.name = 'Bayanburd Tüselün Damdači Chünu togči yin erij harɣa haa' );
+SELECT scientists.name FROM assignedto JOIN scientists ON assignedto.scientist = scientists.ssn GROUP BY scientists.name HAVING COUNT(*) > 1;
+SELECT scientists.name FROM scientists JOIN assignedto ON scientists.name = assignedto.scientist WHERE assignedto.project = 'project_code_here';
+SELECT scientists.name FROM scientists JOIN assignedto ON scientists.name = assignedto.scientist JOIN projects ON assignedto.project = projects.code WHERE projects.hours > 500;
+SELECT scientists.name FROM scientists JOIN assignedto ON scientists.ssn = assignedto.scientist JOIN projects ON assignedto.project = projects.code WHERE projects.hours > 100;
+SELECT scientists.name FROM scientists JOIN assignedto ON scientists.name = assignedto.scientist JOIN projects ON assignedto.project = projects.code WHERE projects.hours > 500;
+SELECT scientists.name FROM scientists JOIN assignedto ON scientists.name = assignedto.scientist GROUP BY scientists.name HAVING COUNT(assignedto.project) > 1;
+SELECT scientists.name FROM scientists JOIN assignedto ON scientists.name = assignedto.scientist JOIN projects ON assignedto.project = projects.code WHERE projects.hours > 500;
+SELECT ssn FROM scientists WHERE ssn IN (SELECT scientist FROM assignedto WHERE project = '顼目代码');
+SELECT name FROM projects WHERE hours = (SELECT MAX(hours) FROM projects);
+SELECT scientist FROM assignedto WHERE project = ' Lumpur Project ';
+SELECT scientists.name FROM scientists JOIN assignedto ON scientists.name = assignedto.scientist WHERE assignedto.project IN (SELECT projects.code FROM projects WHERE projects.name = 'ᠯᠢ ᠸᠧᠨ ᠵᠢᠶᠦ᠋ᠨ') INTERSECT SELECT scientists.name FROM scientists JOIN assignedto ON scientists.name = assignedto.scientist WHERE assignedto.project IN (SELECT projects.code FROM projects WHERE projects.name = 'ᠵᠠᠩ ᡁᠢ ᠮᠢᠩ');
+SELECT name FROM scientists WHERE ssn IN (SELECT scientist FROM assignedto WHERE project IN (SELECT code FROM projects WHERE hours >= 300 AND code LIKE 'EC%'));
+SELECT name FROM scientists WHERE ssn IN (SELECT scientist FROM assignedto WHERE project IN (SELECT code FROM projects WHERE hours >= 300 AND code NOT IN (SELECT project FROM assignedto GROUP BY project HAVING COUNT(*) > 3))) LIMIT 1;
+SELECT name FROM scientists WHERE ssn IN (SELECT scientist FROM assignedto WHERE project IN (SELECT code FROM projects WHERE hours > 500));
+SELECT scientists.ssn FROM scientists INNER JOIN assignedto ON scientists.ssn = assignedto.scientist INNER JOIN projects ON assignedto.project = projects.code WHERE projects.name = 'ᠵᠡᠭᠦᠨᠰᠢ ᠴᠠᠬᠢᠯᠭᠠᠨ ᠳᠠᠮᠵᠢᠭᠤᠯᠬᠤ' INTERSECT SELECT scientists.ssn FROM scientists INNER JOIN assignedto ON scientists.ssn = assignedto.scientist INNER JOIN projects ON assignedto.project = projects.code WHERE projects.name = 'ᠡᠮᠦᠨᠡᠲᠦ᠎ᠶ᠋ᠢᠨ ᠤᠰᠤ᠎ᠶ᠋ᠢ ᠤᠮᠠᠷᠠᠰᠢ ᠲᠠᠲᠠᠬᠤ';
+SELECT ssn FROM scientists INTERSECT SELECT scientist FROM assignedto WHERE project IN ( SELECT code FROM projects WHERE hours > 200 );
+SELECT ssn FROM scientists INTERSECT SELECT scientist FROM assignedto WHERE project IN ( SELECT code FROM projects WHERE hours > 100 );
+SELECT scientists.name FROM scientists JOIN assignedto ON scientists.name = assignedto.scientist WHERE assignedto.project = 'projects.code';
+SELECT s.name FROM scientists s INNER JOIN assignedto a ON s.name = a.scientist WHERE a.project = (SELECT project FROM projects WHERE name = 'Бои бүхэй тусул нэрэдүл') LIMIT 1;
+SELECT DISTINCT scientists.name FROM scientists JOIN assignedto ON scientists.name = assignedto.scientist WHERE assignedto.project IN ( SELECT projects.code FROM projects WHERE projects.name = 'Project X' )
+SELECT scientists.name FROM scientists JOIN assignedto ON scientists.name = assignedto.scientist JOIN projects ON assignedto.project = projects.code WHERE projects.hours > 300;
+SELECT scientists.name FROM scientists INNER JOIN assignedto ON scientists.name = assignedto.scientist GROUP BY scientists.name HAVING COUNT(*) >= 2;
+SELECT ssn FROM scientists INTERSECT SELECT scientist FROM assignedto WHERE project IN ( SELECT code FROM projects WHERE hours > 200 );
+SELECT name FROM scientists WHERE ssn IN (SELECT scientist FROM assignedto WHERE project IN (SELECT code FROM projects));
+SELECT s.name FROM scientists s INNER JOIN assignedto a ON s.name = a.scientist INNER JOIN projects p ON a.project = p.code GROUP BY s.name HAVING SUM(p.hours) > 200;
+SELECT name FROM scientists WHERE ssn IN (SELECT scientist FROM assignedto WHERE project IN (SELECT code FROM projects WHERE hours > 500));
+SELECT name FROM scientists WHERE ssn IN (SELECT scientist FROM assignedto WHERE project IN (SELECT code FROM projects WHERE hours > 500));
+SELECT name FROM scientists WHERE ssn IN (SELECT scientist FROM assignedto WHERE project IN (SELECT code FROM projects WHERE hours > 200));
+SELECT scientists.name FROM scientists JOIN assignedto ON scientists.name = assignedto.scientist JOIN projects ON assignedto.project = projects.name WHERE projects.hours > (SELECT AVG(hours) FROM projects);
+SELECT name FROM scientists WHERE ssn IN (SELECT scientist FROM assignedto WHERE project IN (SELECT code FROM projects WHERE hours > 500));
+SELECT name FROM scientists WHERE ssn IN (SELECT scientist FROM assignedto WHERE project IN (SELECT code FROM projects WHERE hours > 500));
+SELECT scientists.name FROM scientists JOIN assignedto ON scientists.name = assignedto.scientist WHERE assignedto.project IN ( SELECT projects.code FROM projects WHERE projects.hours > 200 ) ORDER BY scientists.name;
+SELECT scientists.name FROM scientists INNER JOIN assignedto ON scientists.name = assignedto.scientist GROUP BY scientists.name HAVING COUNT(*) > 1;
+SELECT name FROM scientists WHERE ssn IN (SELECT scientist FROM assignedto WHERE project IN (SELECT code FROM projects));
+SELECT scientists.name FROM scientists INNER JOIN assignedto ON scientists.name = assignedto.scientist INNER JOIN projects ON assignedto.project = projects.code WHERE projects.name = 'Project X';
+SELECT projects.name FROM projects INNER JOIN assignedto ON projects.name = assignedto.project WHERE assignedto.scientist IN (SELECT ssn FROM scientists WHERE ssn = 'specific_ssn_here') LIMIT 1;
+SELECT scientists.ssn FROM scientists JOIN assignedto ON scientists.ssn = assignedto.scientist JOIN projects ON assignedto.project = projects.code WHERE projects.hours = (SELECT MAX(hours) FROM projects);
+SELECT name FROM scientists WHERE ssn IN (SELECT scientist FROM assignedto WHERE project IN (SELECT code FROM projects WHERE name = 'Project X'));
+SELECT scientists.name FROM scientists INNER JOIN assignedto ON scientists.name = assignedto.scientist INNER JOIN projects ON assignedto.project = projects.code WHERE projects.hours > 5 GROUP BY scientists.name HAVING COUNT(projects.name) > 1;
+SELECT ship.name FROM ship INNER JOIN mission ON ship.ship_id = mission.ship_id WHERE mission.fate = 'sunk';
+SELECT ship.name FROM ship JOIN mission ON ship.ship_id = mission.ship_id WHERE mission.fate = 'sunk';
+SELECT ship.nationality FROM ship JOIN mission ON ship.ship_id = mission.ship_id WHERE mission.speed_knots > 30;
+SELECT ship.nationality FROM ship JOIN mission ON ship.ship_id = mission.ship_id WHERE mission.fate = 'sunk' GROUP BY ship.nationality ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT nationality FROM ship GROUP BY nationality ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT nationality FROM ship GROUP BY nationality ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT ship.nationality FROM ship JOIN mission ON ship.ship_id = mission.ship_id WHERE mission.code = 'AMERIKA' LIMIT 1;
+SELECT nationality FROM ship JOIN mission ON ship.ship_id = mission.ship_id WHERE mission.fate = 'sunk'
+SELECT ship.nationality FROM ship JOIN mission ON ship.ship_id = mission.ship_id WHERE ship.type = ' AUX' AND mission.fate = 'Sunk'
+SELECT nationality FROM ship WHERE nationality IN ('US', 'UK');
+SELECT ship.nationality FROM ship JOIN mission ON ship.ship_id = mission.ship_id WHERE mission.speed_knots > 30;
+SELECT DISTINCT ship.nationality FROM ship INNER JOIN mission ON ship.ship_id = mission.ship_id WHERE mission.fate = 'sunk'
+SELECT name FROM ship WHERE ship_id IN (SELECT ship_id FROM mission WHERE speed_knots > 30) ORDER BY name;
+SELECT name FROM ship JOIN mission ON ship.ship_id = mission.ship_id WHERE mission.code = 'Battle'
+SELECT ship.nationality, ship.name FROM ship JOIN mission ON ship.ship_id = mission.ship_id WHERE mission.speed_knots > 30;
+SELECT ship.name FROM ship JOIN mission ON ship.ship_id = mission.ship_id WHERE mission.speed_knots > 30;
+SELECT ship.name FROM ship JOIN mission ON ship.ship_id = mission.ship_id WHERE mission.speed_knots > 30;
+SELECT name FROM ship JOIN mission ON ship.ship_id = mission.ship_id WHERE mission.code = 'YOR01'
+SELECT name FROM ship WHERE ship_id IN (SELECT ship_id FROM mission WHERE launched_year > 1900 AND speed_knots > 20) ORDER BY name ASC LIMIT 1;
+SELECT name FROM ship JOIN mission ON ship.ship_id = mission.ship_id WHERE mission.speed_knots = (SELECT MAX(speed_knots) FROM mission) LIMIT 1;
+SELECT name FROM ship WHERE ship_id IN (SELECT ship_id FROM mission WHERE launched_year > 1900) ORDER BY tonnage DESC LIMIT 1;
+SELECT ship.name FROM mission JOIN ship ON mission.ship_id = ship.ship_id WHERE mission.fate = 'success' ORDER BY mission.launched_year DESC LIMIT 1;
+SELECT ship.name FROM ship JOIN mission ON ship.ship_id = mission.ship_id WHERE mission.launched_year = 1928;
+SELECT ship.nationality FROM ship JOIN mission ON ship.ship_id = mission.ship_id WHERE mission.launched_year = 1928;
+SELECT ship.name FROM ship JOIN mission ON ship.ship_id = mission.ship_id WHERE mission.launched_year > 1900 AND mission.speed_knots > 30;
+SELECT name FROM ship WHERE ship_id IN (SELECT ship_id FROM mission WHERE launched_year > 2000) ORDER BY tonnage DESC LIMIT 1;
+SELECT ship.name FROM ship JOIN mission ON ship.ship_id = mission.ship_id WHERE mission.launched_year > 1900 AND mission.fate = 'Sunk' ORDER BY ship.tonnage DESC LIMIT 1;
+SELECT ship.name FROM ship JOIN mission ON ship.ship_id = mission.ship_id WHERE mission.speed_knots > 30 AND mission.launched_year >= 1900 ORDER BY ship.tonnage DESC LIMIT 1;
+SELECT name FROM ship WHERE tonnage > 6000 AND nationality = 'British' INTERSECT SELECT name FROM ship WHERE tonnage < 4000 AND nationality = 'British';
+SELECT name FROM ship WHERE tonnage > 6000 AND nationality = '蒙古国' INTERSECT SELECT name FROM ship WHERE tonnage < 4000 AND nationality = '蒙古国';
+SELECT name FROM singer WHERE net_worth_millions > (SELECT AVG(net_worth_millions) FROM singer) ORDER BY birth_year LIMIT 1;
+SELECT name FROM singer WHERE net_worth_millions > (SELECT AVG(net_worth_millions) FROM singer);
+SELECT singer_id FROM singer WHERE net_worth_millions > (SELECT AVG(net_worth_millions) FROM singer)
+SELECT title FROM song WHERE song_id IN (SELECT song_id FROM song WHERE singer_id IN (SELECT singer_id FROM singer WHERE net_worth_millions > 50)) ORDER BY sales DESC LIMIT 1;
+SELECT citizenship FROM singer WHERE net_worth_millions = (SELECT MAX(net_worth_millions) FROM singer);
+SELECT citizenship FROM singer WHERE net_worth_millions = (SELECT MAX(net_worth_millions) FROM singer);
+SELECT singer_id FROM song WHERE title = 'ᠹᠷᠠᠨᠼᠢ'
+SELECT singer_id FROM song WHERE title = 'ᠹᠷᠠᠨᠼᠢ' LIMIT 1;
+SELECT singer_id FROM singer WHERE birth_year BETWEEN 1948 AND 1949;
+SELECT name FROM singer WHERE net_worth_millions > 100;
+SELECT singer_id FROM song GROUP BY singer_id HAVING COUNT(*) > 1;
+SELECT singer_id FROM singer WHERE net_worth_millions > (SELECT AVG(net_worth_millions) FROM singer)
+SELECT name FROM singer WHERE net_worth_millions > (SELECT AVG(net_worth_millions) FROM singer) ORDER BY birth_year LIMIT 1;
+SELECT singer.name FROM singer JOIN song ON singer.singer_id = song.singer_id WHERE song.sales > 1000000 GROUP BY singer.name HAVING COUNT(*) > 1 LIMIT 1;
+SELECT name FROM singer WHERE net_worth_millions > (SELECT AVG(net_worth_millions) FROM singer) ORDER BY birth_year LIMIT 1;
+SELECT name FROM singer WHERE net_worth_millions > (SELECT AVG(net_worth_millions) FROM singer) LIMIT 1;
+SELECT name FROM singer WHERE net_worth_millions = (SELECT MAX(net_worth_millions) FROM singer) LIMIT 1;
+SELECT name FROM singer WHERE net_worth_millions = (SELECT MAX(net_worth_millions) FROM singer) LIMIT 1;
+SELECT name FROM singer WHERE net_worth_millions > (SELECT AVG(net_worth_millions) FROM singer) ORDER BY birth_year LIMIT 1;
+SELECT title FROM song WHERE sales = (SELECT MAX(sales) FROM song) LIMIT 1;
+SELECT name FROM singer WHERE net_worth_millions > 30;
+SELECT name FROM singer WHERE net_worth_millions > 30000;
+SELECT singer_id FROM singer WHERE net_worth_millions > (SELECT AVG(net_worth_millions) FROM singer)
+SELECT name FROM singer WHERE net_worth_millions > (SELECT AVG(net_worth_millions) FROM singer) ORDER BY birth_year LIMIT 1;
+SELECT name FROM singer WHERE net_worth_millions > (SELECT AVG(net_worth_millions) FROM singer) ORDER BY birth_year LIMIT 1;
+SELECT name FROM singer WHERE net_worth_millions > (SELECT AVG(net_worth_millions) FROM singer) ORDER BY birth_year LIMIT 1;
+SELECT name FROM singer WHERE net_worth_millions > (SELECT AVG(net_worth_millions) FROM singer) ORDER BY birth_year LIMIT 1;
+SELECT name FROM singer WHERE net_worth_millions > (SELECT AVG(net_worth_millions) FROM singer)
+SELECT name FROM singer WHERE net_worth_millions BETWEEN 1945 AND 1955;
+SELECT name FROM singer WHERE net_worth_millions BETWEEN 19.45 AND 19.55;
+SELECT club.name FROM club JOIN competition_result ON competition_result.club_id_1 = club.club_id OR competition_result.club_id_2 = club.club_id JOIN competition ON competition.competition_id = competition_result.competition_id WHERE competition.year = 2020 AND competition.competition_type = 'League' AND competition.country = 'Mongolia' GROUP BY club.name ORDER BY SUM(competition_result.score) DESC LIMIT 1;
+SELECT club.name FROM club JOIN competition_result ON competition_result.club_id_1 = club.club_id OR competition_result.club_id_2 = club.club_id JOIN competition ON competition.competition_id = competition_result.competition_id WHERE competition.year = 2023 AND competition.competition_type = 'League' AND competition.country = 'Mongolia' GROUP BY club.name ORDER BY SUM(competition_result.score) DESC LIMIT 1;
+SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 WHERE competition_result.score > 50;
+SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 OR club.club_id = competition_result.club_id_2 JOIN competition ON competition_result.competition_id = competition.competition_id WHERE competition.year = 2016 AND competition.country = 'USA' GROUP BY club.name HAVING COUNT(DISTINCT competition.competition_type) >= 3;
+SELECT club.name FROM club JOIN club_rank ON club.club_id = club_rank.club_id WHERE club_rank.rank = 1;
+SELECT club.name FROM club JOIN club_rank ON club.club_id = club_rank.club_id WHERE club_rank.rank = 1;
+SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 OR club.club_id = competition_result.club_id_2 JOIN competition ON competition_result.competition_id = competition.competition_id WHERE competition.year = (SELECT MAX(year) FROM competition) AND competition.country = '蒙古国' LIMIT 1;
+SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 OR club.club_id = competition_result.club_id_2 JOIN competition ON competition_result.competition_id = competition.competition_id WHERE competition.year = (SELECT MAX(year) FROM competition) LIMIT 1;
+SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 OR club.club_id = competition_result.club_id_2 JOIN competition ON competition_result.competition_id = competition.competition_id WHERE competition.competition_type = '蒙古摔跤冠军联赛' LIMIT 1;
+SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 OR club.club_id = competition_result.club_id_2 JOIN competition ON competition_result.competition_id = competition.competition_id WHERE competition.competition_type = '蒙古摔跤冠军赛' LIMIT 1;
+SELECT club.name FROM club JOIN club_rank ON club.club_id = club_rank.club_id WHERE club_rank.rank = 1;
+SELECT club.name FROM club JOIN club_rank ON club.club_id = club_rank.club_id WHERE club_rank.rank = 1;
+SELECT club.name FROM club JOIN club_rank ON club.club_id = club_rank.club_id WHERE club_rank.rank <= 10 ORDER BY club_rank.gold DESC, club_rank.silver DESC, club_rank.bronze DESC LIMIT 1;
+SELECT name FROM player LIMIT 10;
+SELECT club.region FROM club JOIN competition_result ON club.club_id = competition_result.club_id_2 JOIN competition ON competition_result.competition_id = competition.competition_id WHERE competition.year = 2020 AND competition.country = 'United States' GROUP BY club.region ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT club.region FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 JOIN competition ON competition_result.competition_id = competition.competition_id WHERE competition.country = 'China' GROUP BY club.region ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT club.region FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 WHERE competition_result.score > 50 UNION SELECT club.region FROM club JOIN competition_result ON club.club_id = competition_result.club_id_2 WHERE competition_result.score > 50;
+SELECT club.region FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 OR club.club_id = competition_result.club_id_2 JOIN competition ON competition_result.competition_id = competition.competition_id WHERE competition.year = 2022 AND competition.competition_type = 'International' GROUP BY club.region ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT club.region FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 OR club.club_id = competition_result.club_id_2 JOIN competition ON competition_result.competition_id = competition.competition_id WHERE competition.year = 2020 AND competition.country = 'USA' GROUP BY club.region ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT club.region FROM club INNER JOIN competition_result ON club.club_id = competition_result.club_id_1 OR club.club_id = competition_result.club_id_2 INNER JOIN competition ON competition_result.competition_id = competition.competition_id WHERE competition.year = 2022 AND competition.country = 'Mongolia' GROUP BY club.region ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 JOIN competition ON competition_result.competition_id = competition.competition_id WHERE competition.year = 2023 AND competition.country = 'USA' ORDER BY competition_result.score DESC LIMIT 1;
+SELECT club.region FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 WHERE competition_result.score = (SELECT MAX(score) FROM competition_result) LIMIT 1;
+SELECT club.region FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 WHERE competition_result.score = (SELECT MAX(score) FROM competition_result) LIMIT 1;
+SELECT player.name FROM player WHERE player.points = (SELECT MAX(points) FROM player) LIMIT 1;
+SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 OR club.club_id = competition_result.club_id_2 JOIN competition ON competition_result.competition_id = competition.competition_id WHERE competition.year = 2020 AND competition.competition_type = ' Domestic League' GROUP BY club.name HAVING COUNT(*) > 1;
+SELECT club.name FROM club WHERE club.region = 'Bayern' LIMIT 1;
+SELECT name FROM club WHERE region = '内蒙古' LIMIT 20;
+SELECT name FROM club WHERE region = 'Mongolia' LIMIT 20;
+SELECT competition.year, club.name FROM competition JOIN competition_result ON competition.competition_id = competition_result.competition_id JOIN club ON competition_result.club_id_1 = club.club_id OR competition_result.club_id_2 = club.club_id WHERE competition.country = 'Mongolia' ORDER BY competition.year DESC, club.name;
+SELECT name FROM club WHERE club_id IN (SELECT club_id_1 FROM competition_result WHERE score > 5) INTERSECT SELECT name FROM club WHERE club_id IN (SELECT club_id_2 FROM competition_result WHERE score > 5);
+SELECT competition.year, club.name FROM competition JOIN competition_result ON competition.competition_id = competition_result.competition_id JOIN club ON competition_result.club_id_1 = club.club_id OR competition_result.club_id_2 = club.club_id WHERE competition.country = '蒙古国' ORDER BY competition.year DESC, club.name;
+SELECT competition.year FROM competition JOIN competition_result ON competition.competition_id = competition_result.competition_id WHERE competition_result.club_id_1 = (SELECT club_id FROM club WHERE name = '巴林') OR competition_result.club_id_2 = (SELECT club_id FROM club WHERE name = '巴林') ORDER BY competition.year ASC LIMIT 1;
+SELECT competition.year, club.name FROM competition JOIN competition_result ON competition.competition_id = competition_result.competition_id JOIN club ON competition_result.club_id_1 = club.club_id OR competition_result.club_id_2 = club.club_id WHERE competition.country = 'Mongolia'
+SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 OR club.club_id = competition_result.club_id_2 JOIN competition ON competition.competition_id = competition_result.competition_id WHERE competition.year = 2023 AND competition.country = 'Mongolia' GROUP BY club.name HAVING COUNT(DISTINCT competition.competition_id) = 5;
+SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 JOIN competition ON competition_result.competition_id = competition.competition_id WHERE competition.year = 2023 AND competition.country = 'Mongolia'
+SELECT club.name FROM club INNER JOIN competition_result ON club.club_id = competition_result.club_id_1 OR club.club_id = competition_result.club_id_2 INNER JOIN competition ON competition.competition_id = competition_result.competition_id WHERE competition.year = 2008 AND competition.competition_type = 'League' GROUP BY club.name HAVING COUNT(*) > 5;
+SELECT T2.name FROM player AS T1 INNER JOIN club AS T2 ON T1.club_id = T2.club_id WHERE T1.points >= 20 AND T1.goals <= 10 LIMIT 1;
+SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 WHERE competition_result.score > 20 UNION SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_2 WHERE competition_result.score > 20 LIMIT 10;
+SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 WHERE competition_result.score > 5 UNION SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_2 WHERE competition_result.score > 5;
+SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 OR club.club_id = competition_result.club_id_2 JOIN competition ON competition_result.competition_id = competition.competition_id WHERE competition.year = 2020 AND competition.competition_type = 'League' GROUP BY club.name HAVING COUNT(*) > 1;
+SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 OR club.club_id = competition_result.club_id_2 JOIN competition ON competition_result.competition_id = competition.competition_id WHERE competition.year = 2023 AND competition.competition_type = 'League' AND competition.country = 'Scotland' ORDER BY competition_result.score DESC LIMIT 1;
+SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 OR club.club_id = competition_result.club_id_2 JOIN competition ON competition_result.competition_id = competition.competition_id WHERE competition.year = (SELECT MAX(year) FROM competition) AND competition.competition_type = 'League' AND club.region = 'East';
+SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 OR club.club_id = competition_result.club_id_2 JOIN competition ON competition_result.competition_id = competition.competition_id WHERE competition.year = 2020 AND competition.competition_type = 'League' GROUP BY club.name HAVING COUNT(*) > 1;
+SELECT club.name FROM club INNER JOIN competition_result ON club.club_id = competition_result.club_id_1 OR club.club_id = competition_result.club_id_2 INNER JOIN competition ON competition.competition_id = competition_result.competition_id WHERE competition.year = 2020 AND competition.competition_type = 'League' GROUP BY club.name HAVING COUNT(*) > 1;
+SELECT name FROM club WHERE region = 'Asia' LIMIT 30;
+SELECT name FROM club WHERE region = 'Bayanhongor' LIMIT 30;
+SELECT club.name FROM club WHERE club.region = ' ulaanbaatar'
+SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 OR club.club_id = competition_result.club_id_2 JOIN competition ON competition_result.competition_id = competition.competition_id WHERE competition.country = '蒙古国' AND competition.year = 2023 LIMIT 1;
+SELECT name FROM club WHERE region = ' INNER MONGOLIA' OR region = 'MONGOLIAN LEAGUE';
+SELECT name FROM club WHERE club_id IN (SELECT club_id_1 FROM competition_result WHERE score = (SELECT MAX(score) FROM competition_result)) UNION SELECT name FROM club WHERE club_id IN (SELECT club_id_2 FROM competition_result WHERE score = (SELECT MAX(score) FROM competition_result));
+SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 JOIN competition ON competition_result.competition_id = competition.competition_id WHERE competition.year = 2023 AND competition.competition_type = 'World Cup'
+SELECT club.name FROM club JOIN competition_result ON club.club_id = competition_result.club_id_1 WHERE competition_result.score = (SELECT MAX(score) FROM competition_result) LIMIT 1;
+SELECT nationality FROM swimmer WHERE id IN (SELECT swimmer_id FROM record WHERE result = 'WR')
+SELECT swimmer.name FROM swimmer JOIN record ON swimmer.id = record.swimmer_id WHERE record.result = 'win' LIMIT 1;
+SELECT swimmer.nationality FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id INNER JOIN event ON event.id = record.event_id WHERE event.year = 2022 LIMIT 1;
+SELECT nationality FROM swimmer WHERE id IN (SELECT swimmer_id FROM record WHERE result = (SELECT MIN(result) FROM record)) LIMIT 1;
+SELECT swimmer.id, swimmer.nationality FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id INNER JOIN event ON record.event_id = event.id INNER JOIN stadium ON event.stadium_id = stadium.id WHERE stadium.city = '北京' AND event.year = 2008
+SELECT swimmer.nationality FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id INNER JOIN event ON event.id = record.event_id INNER JOIN stadium ON stadium.id = event.stadium_id WHERE stadium.city = 'Beijing' AND event.year = 2008;
+SELECT swimmer.name FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id INNER JOIN event ON event.id = record.event_id INNER JOIN stadium ON stadium.id = event.stadium_id WHERE stadium.city = 'ulan bator' AND event.year = 2022;
+SELECT swimmer.name FROM swimmer JOIN record ON swimmer.id = record.swimmer_id JOIN event ON event.id = record.event_id WHERE event.year = 3 AND event.stadium_id IN (SELECT stadium.id FROM stadium WHERE stadium.city = 'Өлөстөрөгт') LIMIT 1;
+SELECT swimmer.name FROM swimmer WHERE swimmer.meter_300 + swimmer.meter_400 + swimmer.meter_500 + swimmer.meter_600 >= 6000 AND swimmer.meter_300 + swimmer.meter_400 + swimmer.meter_500 <= 5000;
+SELECT swimmer.name FROM swimmer JOIN record ON swimmer.id = record.swimmer_id JOIN event ON event.id = record.event_id JOIN stadium ON stadium.id = event.stadium_id WHERE stadium.opening_year > 2006 AND event.year = 2006 ORDER BY record.result LIMIT 1;
+SELECT swimmer.name FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id INNER JOIN event ON event.id = record.event_id INNER JOIN stadium ON stadium.id = event.stadium_id WHERE stadium.city = 'Улаанбаатар' ORDER BY record.result DESC LIMIT 1;
+SELECT swimmer.name FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id INNER JOIN event ON record.event_id = event.id INNER JOIN stadium ON event.stadium_id = stadium.id WHERE stadium.city = ' ulaanbaatar' AND event.year = 2006;
+SELECT swimmer.name FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id INNER JOIN event ON event.id = record.event_id WHERE event.name = 'Ortos Gedei Ene Uls Tus Tedui Tamir' ORDER BY record.result LIMIT 1;
+SELECT swimmer.nationality FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id INNER JOIN event ON record.event_id = event.id WHERE event.name = '100 meter freestyle' AND record.result = 'world record';
+SELECT swimmer.name FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id INNER JOIN event ON record.event_id = event.id INNER JOIN stadium ON event.stadium_id = stadium.id WHERE stadium.country = 'Mongolia' AND event.year = 2022 LIMIT 1;
+SELECT swimmer.name FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id INNER JOIN event ON event.id = record.event_id INNER JOIN stadium ON stadium.id = event.stadium_id WHERE stadium.country = 'ᠤᠯᠤᠰ᠎ ᠢ ᠵᠢᠭᠰᠠᠭᠠᠨ ᠭᠠᠷᠭᠠᠨ᠎ᠠ' AND event.year = 2023;
+SELECT swimmer.name FROM swimmer WHERE swimmer.meter_200 < 300 AND swimmer.meter_300 > 200;
+SELECT swimmer.name FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id INNER JOIN event ON record.event_id = event.id WHERE event.name = 'ᠢᠯᠠᠯᠲᠠ ᠣᠯᠬᠤ' AND swimmer.nationality = '蒙古国'
+SELECT swimmer.name FROM swimmer INNER JOIN record ON swimmer.name = record.swimmer_id INNER JOIN event ON event.id = record.event_id WHERE event.year = 2023 LIMIT 1;
+SELECT swimmer.name FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id INNER JOIN event ON event.id = record.event_id INNER JOIN stadium ON stadium.id = event.stadium_id WHERE stadium.city = '德尔赫伊因' AND event.year = 2022;
+SELECT swimmer.name FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id WHERE record.result = (SELECT MIN(result) FROM record) LIMIT 1;
+SELECT swimmer.name FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id WHERE record.result = (SELECT MIN(result) FROM record) LIMIT 1;
+SELECT swimmer.name FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id INNER JOIN event ON record.event_id = event.id WHERE event.year = 2008 LIMIT 1;
+SELECT swimmer.name FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id INNER JOIN event ON record.event_id = event.id INNER JOIN stadium ON event.stadium_id = stadium.id WHERE stadium.country = 'ᠢᠯᠠᠬᠤ' AND swimmer.nationality != 'ᠢᠯᠠᠬᠤ' LIMIT 1;
+SELECT swimmer.name FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id INNER JOIN event ON record.event_id = event.id WHERE event.year = 2022 LIMIT 1;
+SELECT swimmer.name FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id INNER JOIN event ON event.id = record.event_id INNER JOIN stadium ON stadium.id = event.stadium_id WHERE stadium.city = 'Илаху' AND event.year = 2022;
+SELECT swimmer.name FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id INNER JOIN event ON record.event_id = event.id INNER JOIN stadium ON event.stadium_id = stadium.id WHERE stadium.country = 'Australia' AND event.name LIKE '%200%' AND record.result = (SELECT MIN(result) FROM record WHERE event_id IN (SELECT id FROM event WHERE stadium_id = stadium.id AND name LIKE '%200%')) LIMIT 1;
+SELECT swimmer.name FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id WHERE record.result = (SELECT MIN(result) FROM record) LIMIT 1;
+SELECT swimmer.id, swimmer.nationality FROM swimmer JOIN record ON swimmer.id = record.swimmer_id JOIN event ON record.event_id = event.id JOIN stadium ON event.stadium_id = stadium.id WHERE stadium.country = 'Mongolia' AND event.year = 2023;
+SELECT swimmer.name FROM swimmer INNER JOIN record ON swimmer.id = record.swimmer_id INNER JOIN event ON event.id = record.event_id INNER JOIN stadium ON stadium.id = event.stadium_id WHERE event.year = 2005 AND stadium.city = 'elsinki' AND stadium.country = 'Finland' AND record.result = (SELECT MIN(result) FROM record WHERE event_id IN (SELECT id FROM event WHERE year = 2005 AND stadium_id IN (SELECT id FROM stadium WHERE city = 'elsinki' AND country = 'Finland'))) LIMIT 1;
+SELECT investors.investor_details FROM investors JOIN transactions ON transactions.investor_id = investors.investor_id JOIN ref_transaction_types ON transactions.transaction_type_code = ref_transaction_types.transaction_type_code WHERE ref_transaction_types.transaction_type_description = 'Purchase';
+SELECT investors.investor_id FROM investors JOIN transactions ON transactions.investor_id = investors.investor_id JOIN ref_transaction_types ON transactions.transaction_type_code = ref_transaction_types.transaction_type_code WHERE ref_transaction_types.transaction_type_description = 'Purchase';
+SELECT investor_id FROM transactions INNER JOIN transactions_lots ON transactions.transaction_id = transactions_lots.transaction_id WHERE transaction_type_code = 'Purchase' GROUP BY investor_id HAVING SUM(share_count) > 100;
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'BUY' INTERSECT SELECT investor_id FROM transactions WHERE transaction_type_code = 'SELL';
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'BUY' INTERSECT SELECT investor_id FROM transactions WHERE transaction_type_code = 'SELL';
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'purchase' INTERSECT SELECT investor_id FROM transactions WHERE transaction_type_code = 'sale';
+SELECT investor_details FROM investors WHERE investor_id IN (SELECT investor_id FROM transactions WHERE transaction_type_code = 'PUR');
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'Sale';
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'purchase' INTERSECT SELECT investor_id FROM transactions WHERE transaction_type_code = 'sale';
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'PUR'
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'PUR' AND amount_of_transaction >= 50
+SELECT investor_id FROM transactions WHERE amount_of_transaction >= 10000 AND transaction_type_code = 'purchase' LIMIT 1;
+SELECT investor_id FROM transactions WHERE transaction_type_code = ' Purchase' AND amount_of_transaction >= 100 AND amount_of_transaction <= 1000 LIMIT 10;
+SELECT investor_id FROM transactions WHERE transaction_type_code = ' Purchase' LIMIT 10;
+SELECT investors.investor_details FROM investors JOIN transactions ON investors.investor_id = transactions.investor_id JOIN transactions_lots ON transactions.transaction_id = transactions_lots.transaction_id JOIN lots ON transactions_lots.lot_id = lots.lot_id WHERE transactions.amount_of_transaction >= 100 GROUP BY investors.investor_details HAVING SUM(lots.lot_details) > 100;
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'BUY' INTERSECT SELECT investor_id FROM transactions WHERE transaction_type_code = 'SELL';
+SELECT investors.investor_id, investors.* FROM investors JOIN transactions ON investors.investor_id = transactions.investor_id JOIN ref_transaction_types ON transactions.transaction_type_code = ref_transaction_types.transaction_type_code WHERE ref_transaction_types.transaction_type_description = 'Purchase';
+SELECT investors.investor_id FROM investors WHERE investors.investor_id NOT IN (SELECT DISTINCT transactions.investor_id FROM transactions)
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'Sale' AND share_count * other_details >= 10000 LIMIT 1;
+SELECT investor_details FROM investors WHERE investor_id IN (SELECT investor_id FROM transactions JOIN sales ON transactions.transaction_id = sales.sales_transaction_id WHERE amount_of_transaction >= 3000 AND transaction_type_code = 'BUY') LIMIT 1;
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'PURCHASE' AND amount_of_transaction >= 50 GROUP BY investor_id HAVING COUNT(*) >= 3;
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'PUR' AND amount_of_transaction > 100 AND date_of_transaction >= '2023-01-01' LIMIT 1;
+SELECT investor_id FROM transactions GROUP BY investor_id ORDER BY SUM(amount_of_transaction) DESC LIMIT 1;
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'BUY' INTERSECT SELECT investor_id FROM transactions WHERE transaction_type_code = 'SELL';
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'PURCHASE' INTERSECT SELECT investor_id FROM transactions WHERE transaction_type_code = 'SALE';
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'Buy';
+SELECT investors.investor_id FROM transactions JOIN investors ON transactions.investor_id = investors.investor_id WHERE transaction_type_code = 'PURCHASE' ORDER BY date_of_transaction DESC LIMIT 1;
+SELECT investor_id FROM transactions GROUP BY investor_id HAVING SUM(amount_of_transaction) > 5000;
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'BUY' INTERSECT SELECT investor_id FROM transactions WHERE transaction_type_code = 'SELL';
+SELECT investors.investor_id FROM transactions JOIN investors ON transactions.investor_id = investors.investor_id WHERE transaction_type_code = 'Buy' AND amount_of_transaction > 0 AND date_of_transaction LIKE '2023%'
+SELECT investor_id FROM investors WHERE investor_id IN ( SELECT investor_id FROM transactions WHERE transaction_type_code = 'PURCHASE' ) AND investor_id IN ( SELECT investor_id FROM transactions WHERE transaction_type_code = 'SALE' );
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'PURCHASE' INTERSECT SELECT investor_id FROM transactions WHERE transaction_type_code = 'SALE';
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'BUY' INTERSECT SELECT investor_id FROM transactions WHERE transaction_type_code = 'SELL';
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'Sale';
+SELECT investors.investor_details FROM investors JOIN transactions ON transactions.investor_id = investors.investor_id JOIN ref_transaction_types ON transactions.transaction_type_code = ref_transaction_types.transaction_type_code WHERE ref_transaction_types.transaction_type_description = 'Purchase';
+SELECT investors.investor_details FROM investors JOIN transactions ON transactions.investor_id = investors.investor_id JOIN ref_transaction_types ON transactions.transaction_type_code = ref_transaction_types.transaction_type_code WHERE ref_transaction_types.transaction_type_description = 'Purchase' AND transactions.date_of_transaction BETWEEN '2023-01-01' AND '2023-03-31';
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'Purchase' INTERSECT SELECT investor_id FROM transactions WHERE transaction_type_code = 'Sale';
+SELECT investors.investor_details FROM investors JOIN transactions ON investors.investor_id = transactions.investor_id WHERE transactions.transaction_type_code IN ( SELECT transaction_type_code FROM ref_transaction_types WHERE transaction_type_description LIKE '%Buy%' )
+SELECT investor_id FROM transactions WHERE amount_of_transaction BETWEEN 100 AND 200 LIMIT 1;
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'purchase' INTERSECT SELECT investor_id FROM transactions WHERE transaction_type_code = 'sale';
+SELECT investor_id FROM transactions WHERE transaction_type_code = 'BUY' INTERSECT SELECT investor_id FROM transactions WHERE transaction_type_code = 'SELL';
+SELECT name FROM station ORDER BY total_passengers DESC LIMIT 1;
+SELECT station.location FROM station JOIN train_station ON station.station_id = train_station.station_id JOIN train ON train_station.train_id = train.train_id WHERE train.service = '*' ORDER BY station.total_passengers DESC LIMIT 1;
+SELECT name FROM train Station WHERE train_id IN (SELECT train_id FROM train WHERE service = 'Express') ORDER BY time ASC LIMIT 1;
+SELECT I'm sorry, but your request seems to be incomplete or contains non-English characters that do not form a clear question. Please provide a complete question in English, and I will be happy to help you write the appropriate SQLite SQL query.
+SELECT station.location FROM station JOIN train_station ON station.station_id = train_station.station_id JOIN train ON train.train_id = train_station.train_id WHERE train.service = 'Main Service' ORDER BY station.total_passengers DESC LIMIT 1;
+SELECT station.name FROM station JOIN train_station ON station.station_id = train_station.station_id JOIN train ON train_station.train_id = train.train_id WHERE train.service = 'Fast';
+SELECT station.name FROM station JOIN train_station ON station.station_id = train_station.station_id JOIN train ON train_station.train_id = train.train_id WHERE train.service = 'Express' ORDER BY station.total_passengers DESC LIMIT 1;
+SELECT name FROM station WHERE annual_entry_exit BETWEEN 15000 AND 25000 AND annual_interchanges > 25
+SELECT station.name FROM station JOIN train_station ON station.station_id = train_station.station_id JOIN train ON train_station.train_id = train.train_id WHERE train.time BETWEEN '15:00:00' AND '17:00:00' ORDER BY station.annual_entry_exit DESC LIMIT 1;
+SELECT station.name FROM station INNER JOIN train_station ON station.station_id = train_station.station_id INNER JOIN train ON train_station.train_id = train.train_id WHERE train.time = '6:00 AM';
+SELECT station.name FROM station JOIN train_station ON station.station_id = train_station.station_id JOIN train ON train_station.train_id = train.train_id WHERE train.service = 'Express' AND train.time BETWEEN '08:00:00' AND '10:00:00' ORDER BY station.total_passengers DESC LIMIT 1;
+SELECT station.name FROM station JOIN train_station ON station.station_id = train_station.station_id JOIN train ON train_station.train_id = train.train_id WHERE train.service = 'Express' ORDER BY station.total_passengers DESC LIMIT 1;
+SELECT station.name FROM station JOIN train_station ON station.station_id = train_station.station_id JOIN train ON train_station.train_id = train.train_id WHERE train.service = 'Express';
+SELECT station.name FROM station JOIN train_station ON station.name = train_station.station_name JOIN train ON train_station.train_id = train.train_id WHERE train.service = 'Express' ORDER BY station.total_passengers DESC LIMIT 1;
+SELECT name FROM station ORDER BY annual_entry_exit DESC LIMIT 1;
+SELECT name FROM station WHERE location = 'GWANGJU' LIMIT 1;
+SELECT station.location FROM station JOIN train_station ON station.station_id = train_station.station_id JOIN train ON train.train_id = train_station.train_id WHERE train.service = 'Express'
+SELECT station.name FROM station INNER JOIN train_station ON station.station_id = train_station.station_id INNER JOIN train ON train_station.train_id = train.train_id WHERE train.service = 'Express';
+SELECT station.name FROM station WHERE station.number_of_platforms = (SELECT MAX(number_of_platforms) FROM station) LIMIT 1;
+SELECT station.name FROM station JOIN train_station ON station.station_id = train_station.station_id JOIN train ON train_station.train_id = train.train_id WHERE train.service = 'Express';
+SELECT station.name FROM station JOIN train_station ON station.station_id = train_station.station_id JOIN train ON train_station.train_id = train.train_id WHERE train.service = 'ᠹᠦ ᠰᠢᠨ ᠨᠡᠷᠡᠮᠵᠢᠲᠦ' AND train.time = 'ᠶ᠎ᠡ ᠵᠣᠬᠢᠴᠠᠩᠭᠤᠢ';
+SELECT name FROM station ORDER BY total_passengers DESC LIMIT 1;
+SELECT station.name FROM station JOIN train_station ON station.station_id = train_station.station_id JOIN train ON train_station.train_id = train.train_id WHERE train.service = 'Main Service' ORDER BY station.total_passengers DESC LIMIT 1;
+SELECT contestant_name FROM contestants WHERE contestant_number IN (SELECT contestant_number FROM votes WHERE state = 'MN')
+SELECT contestant_name FROM contestants JOIN votes ON contestants.contestant_number = votes.contestant_number JOIN area_code_state ON votes.state = area_code_state.state WHERE area_code_state.state = 'OR';
+SELECT contestant_name FROM contestants WHERE contestant_number IN (SELECT contestant_number FROM votes WHERE state = 'MI')
+SELECT contestant_name FROM contestants INTERSECT SELECT T2.contestant_name FROM votes AS T1 JOIN contestants AS T2 ON T1.contestant_number = T2.contestant_number WHERE T1.state IN ( SELECT state FROM area_code_state );
+SELECT contestant_name FROM contestants WHERE contestant_number IN (SELECT contestant_number FROM votes WHERE state = (SELECT state FROM area_code_state WHERE area_code = '202') GROUP BY contestant_number HAVING COUNT(*) > 1)
+SELECT contestants.contestant_number FROM contestants INNER JOIN votes ON contestants.contestant_number = votes.contestant_number WHERE votes.state = 'MN' GROUP BY contestants.contestant_number ORDER BY COUNT(votes.vote_id) DESC LIMIT 1;
+SELECT state FROM votes JOIN area_code_state ON votes.state = area_code_state.area_code GROUP BY state ORDER BY COUNT(DISTINCT vote_id) DESC LIMIT 1;
+SELECT contestants.contestant_name FROM contestants JOIN votes ON contestants.contestant_name = votes.contestant_number JOIN area_code_state ON votes.state = area_code_state.state WHERE area_code_state.state = 'California';
+SELECT contestant_name FROM contestants INNER JOIN votes ON contestants.contestant_number = votes.vote_id INNER JOIN area_code_state ON votes.state = area_code_state.state GROUP BY contestant_name ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT contestant_name FROM contestants WHERE contestant_number IN (SELECT contestant_number FROM votes WHERE state = '内蒙古') LIMIT 1;
+SELECT contestants.contestant_name FROM votes JOIN contestants ON votes.vote_id = contestants.contestant_number JOIN area_code_state ON votes.state = area_code_state.state GROUP BY contestants.contestant_name ORDER BY COUNT(votes.vote_id) DESC LIMIT 1;
+SELECT contestant_name FROM contestants WHERE contestant_number IN (SELECT contestant_number FROM votes WHERE state = 'Alabama') LIMIT 1;
+SELECT contestant_name FROM contestants WHERE contestant_number IN (SELECT contestant_number FROM votes WHERE state = '内蒙古')
+SELECT contestants.contestant_number FROM contestants INNER JOIN votes ON contestants.contestant_number = votes.contestant_number WHERE votes.state = 'WV' AND votes.created BETWEEN '2023-01-01' AND '2023-04-30';
+SELECT contestant_number FROM votes JOIN contestants ON votes.contestant_number = contestants.contestant_number GROUP BY contestant_number ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT players.first_name, players.last_name FROM players INNER JOIN rankings ON players.player_id = rankings.player_id WHERE rankings.ranking_points >= 10000 AND rankings.tours >= 50;
+SELECT first_name, last_name FROM players WHERE country_code = 'MNG'
+SELECT players.first_name, players.last_name FROM players INNER JOIN matches ON players.player_id = matches.loser_id WHERE matches.draw_size = 32 AND matches.loser_age > 30;
+SELECT players.first_name, players.last_name FROM players INNER JOIN matches ON players.player_id = matches.loser_id INNER JOIN rankings ON players.player_id = rankings.player_id WHERE matches.draw_size > 32 AND rankings.ranking_points > 5000 ORDER BY rankings.ranking_points DESC LIMIT 1;
+SELECT I understand you need a query without additional explanations. However, the question provided seems to be incomplete or nonsensical, containing non-English characters and phrases that don't convey a clear SQL query request. Please provide a complete and clear question or the details of the information you need to extract from the given tables, and I will be happy to help you write the appropriate SQL query.
+SELECT last_name FROM players WHERE country_code = 'MGL' LIMIT 1;
+SELECT winner_ioc FROM matches WHERE winner_age > 30 INTERSECT SELECT loser_ioc FROM matches WHERE loser_age > 30;
+SELECT COUNT(*) FROM matches WHERE winner_age > 30 AND loser_age < 25;
+SELECT players.first_name, players.last_name FROM players INNER JOIN rankings ON players.player_id = rankings.player_id WHERE rankings.tours = 'Grand Slam' AND rankings.ranking_points >= 10000 ORDER BY rankings.ranking_date DESC LIMIT 1;
+SELECT players.first_name, players.last_name FROM players JOIN rankings ON players.player_id = rankings.player_id JOIN matches ON players.player_id = matches.winner_id WHERE rankings.ranking_points = (SELECT MAX(ranking_points) FROM rankings) AND matches.best_of = 5 GROUP BY players.player_id HAVING COUNT(matches.winner_id) >= 3;
+SELECT players.first_name, players.last_name FROM players INNER JOIN rankings ON players.player_id = rankings.player_id WHERE rankings.ranking_points >= 8500 AND rankings.tours >= 20;
+SELECT DISTINCT players.first_name, players.last_name FROM players JOIN rankings ON players.player_id = rankings.player_id JOIN matches ON players.player_id = matches.winner_id WHERE rankings.ranking_points >= 8000 AND matches.score = '6-0 6-0';
+SELECT players.first_name, players.last_name FROM players INNER JOIN rankings ON players.player_id = rankings.player_id WHERE rankings.ranking_points > 8000 AND rankings.tours >= 50;
+SELECT first_name, last_name FROM players WHERE hand = 'Left-handed' LIMIT 1;
+SELECT I'm sorry, but your request seems to be incomplete or contains non-English instructions that I cannot understand. Please provide a clear and complete English question or query that you would like me to translate into an SQLite SQL query.
+SELECT country_code FROM players JOIN matches ON players.player_id = matches.loser_id JOIN rankings ON players.player_id = rankings.player_id WHERE matches.best_of = 5 AND rankings.ranking_points >= 8000 GROUP BY country_code ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT players.first_name, players.last_name FROM players JOIN rankings ON players.player_id = rankings.player_id WHERE rankings.ranking <= 10;
+SELECT winner_name FROM matches WHERE best_of = 5 ORDER BY winner_name LIMIT 10;
+SELECT players.first_name FROM players JOIN rankings ON players.player_id = rankings.player_id JOIN matches ON players.player_id = matches.winner_id WHERE rankings.ranking_points BETWEEN 8500 AND 9000 AND matches.draw_size > 32 AND players.birth_date BETWEEN '1990-01-01' AND '1994-12-31' ORDER BY players.first_name ASC;
+SELECT COUNT(*) FROM matches WHERE year BETWEEN 2013 AND 2016;
+SELECT players.first_name FROM players JOIN rankings ON players.player_id = rankings.player_id JOIN matches ON players.player_id = matches.winner_id WHERE rankings.ranking_date BETWEEN '2013-01-01' AND '2016-12-31' AND rankings.ranking <= 10 AND matches.best_of = 5 GROUP BY players.player_id HAVING COUNT(matches.winner_id) >= 3;
+SELECT players.first_name FROM players JOIN rankings ON players.player_id = rankings.player_id JOIN matches ON players.player_id = matches.winner_id WHERE rankings.ranking_date BETWEEN '2013-01-01' AND '2016-12-31' AND rankings.ranking <= 10 GROUP BY players.first_name HAVING COUNT(matches.winner_id) >= 5;
+SELECT players.first_name, players.last_name FROM players INNER JOIN rankings ON players.player_id = rankings.player_id WHERE rankings.ranking = 1 AND players.hand = 'Left-handed' LIMIT 1;
+SELECT winner_name FROM matches WHERE winner_name IN (SELECT loser_name FROM matches WHERE loser_ioc = 'MNG') INTERSECT SELECT winner_name FROM matches WHERE winner_name IN (SELECT loser_name FROM matches WHERE loser_ioc = 'AUS');
+SELECT country_code FROM players WHERE player_id IN (SELECT loser_id FROM matches WHERE winner_rank = 1) INTERSECT SELECT country_code FROM players WHERE player_id IN (SELECT winner_id FROM matches WHERE loser_rank = 1);
+SELECT country_code FROM players WHERE player_id IN (SELECT winner_id FROM matches WHERE loser_name = 'Батbold') INTERSECT SELECT country_code FROM players WHERE player_id IN (SELECT loser_id FROM matches WHERE winner_name = 'Батbold');
+SELECT players.first_name FROM players JOIN rankings ON players.player_id = rankings.player_id JOIN matches AS winner ON players.player_id = winner.winner_id JOIN matches AS loser ON players.player_id = loser.loser_id WHERE rankings.ranking_points > 8500 AND winner.best_of = 5 AND loser.best_of = 3;
+SELECT winner_ioc FROM matches WHERE loser_ioc = 'MGL' INTERSECT SELECT winner_ioc FROM matches WHERE loser_ioc = 'RUS';
+SELECT I'm sorry, but your request seems to be incomplete or contains non-English instructions that are unclear. Please provide a complete and clear query request in English so that I can assist you with the proper SQLite SQL query.
+SELECT players.last_name FROM players JOIN rankings ON players.player_id = rankings.player_id JOIN matches ON players.player_id = matches.winner_id WHERE rankings.ranking_points = (SELECT MAX(ranking_points) FROM rankings) AND players.hand = '左手' AND players.country_code = 'CHN' LIMIT 1;
+SELECT Sorry, but your question seems to be incomplete or not properly formatted, especially the part after the Mongolian script. Could you please provide a clear question or the specific details you need to extract from the given tables?
+SELECT winner_ioc FROM matches GROUP BY winner_ioc ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT players.first_name, players.last_name FROM players INNER JOIN matches ON players.player_id = matches.loser_id WHERE matches.best_of = 5 AND matches.draw_size = 32 AND matches.winner_id IS NOT NULL;
+SELECT players.first_name, players.last_name FROM players JOIN rankings ON players.player_id = rankings.player_id JOIN matches ON players.player_id = matches.winner_id WHERE matches.best_of = 5 AND matches.draw_size = 32 AND rankings.ranking_points >= 4000 ORDER BY rankings.ranking_points DESC LIMIT 1;
+SELECT winner_name FROM matches WHERE winner_id IN (SELECT player_id FROM players WHERE country_code = 'CHN') AND loser_id IN (SELECT player_id FROM players WHERE country_code = 'RUS');
+SELECT winner_name FROM matches WHERE loser_name = '蒙古国选手姓名';
+SELECT players.first_name, players.last_name FROM players JOIN rankings ON players.player_id = rankings.player_id WHERE rankings.ranking_points > (SELECT AVG(ranking_points) FROM rankings) ORDER BY rankings.ranking_points DESC;
+SELECT players.first_name, players.last_name FROM players INNER JOIN rankings ON players.player_id = rankings.player_id WHERE rankings.ranking_points >= 8000 AND players.country_code = 'AUS' LIMIT 1;
+SELECT DISTINCT winner_name FROM matches;
+SELECT players.first_name, players.last_name FROM players INNER JOIN rankings ON players.player_id = rankings.player_id WHERE rankings.ranking_points > 8500 AND rankings.ranking_date = (SELECT MAX(ranking_date) FROM rankings WHERE rankings.player_id = players.player_id);
+SELECT Sorry, but your request seems to be incomplete or unclear. Please provide a clear question or the specific information you would like to retrieve from the given database schema. Once I have that, I can write the appropriate SQLite SQL query for you.
+SELECT players.last_name FROM players JOIN rankings ON players.player_id = rankings.player_id WHERE rankings.ranking_points = (SELECT MAX(ranking_points) FROM rankings) AND rankings.tours >= 50;
+SELECT players.last_name FROM players JOIN rankings ON players.player_id = rankings.player_id JOIN matches ON players.player_id = matches.loser_id WHERE rankings.ranking_points > 8500 AND matches.best_of = 5 ORDER BY rankings.ranking_points DESC LIMIT 1;
+SELECT players.last_name FROM players JOIN rankings ON players.player_id = rankings.player_id WHERE rankings.ranking_points = (SELECT MAX(ranking_points) FROM rankings) AND rankings.tours >= 50 ORDER BY rankings.ranking_date DESC LIMIT 1;
+SELECT players.first_name, players.last_name FROM players INNER JOIN rankings ON players.player_id = rankings.player_id WHERE rankings.ranking_points >= 10000 ORDER BY rankings.ranking_points DESC LIMIT 1;
+SELECT players.first_name, players.last_name FROM players INNER JOIN rankings ON players.player_id = rankings.player_id INNER JOIN matches ON players.player_id = matches.winner_id WHERE matches.best_of = 5 AND matches.draw_size > 128 ORDER BY rankings.ranking_points DESC LIMIT 1;
+SELECT players.first_name, players.last_name FROM players JOIN matches ON players.player_id = matches.winner_id WHERE matches.best_of = 5 AND matches.draw_size = 32;
+SELECT first_name, last_name FROM players WHERE player_id IN (SELECT loser_id FROM matches WHERE loser_age > 30 INTERSECT SELECT winner_id FROM matches WHERE winner_age > 30) LIMIT 1;
+SELECT players.first_name, players.last_name FROM players INNER JOIN rankings ON players.player_id = rankings.player_id INNER JOIN matches ON players.player_id = matches.winner_id WHERE rankings.ranking_points >= 8500 AND matches.draw_size > 32 GROUP BY players.player_id HAVING COUNT(matches.winner_id) >= 3 LIMIT 50;
+SELECT first_name, last_name FROM players WHERE hand = 'Left-handed' LIMIT 50;
+SELECT players.first_name, players.last_name FROM players INNER JOIN rankings ON players.player_id = rankings.player_id WHERE rankings.ranking_points > 8000 AND rankings.tours >= 50;
+SELECT players.first_name, players.last_name FROM rankings JOIN players ON rankings.player_id = players.player_id WHERE rankings.ranking_points > 10000 ORDER BY rankings.ranking_points DESC LIMIT 1;
+SELECT players.first_name, players.last_name FROM players JOIN matches ON players.player_id = matches.winner_id WHERE matches.best_of = 5 AND matches.draw_size = 32;
+SELECT players.first_name, players.last_name FROM players INNER JOIN matches ON players.player_id = matches.winner_id WHERE matches.best_of = 5 AND matches.draw_size = 32 AND matches.loser_age > 30;
+SELECT DISTINCT players.first_name, players.last_name FROM players INNER JOIN rankings ON players.player_id = rankings.player_id INNER JOIN matches AS winner ON players.player_id = winner.winner_id INNER JOIN matches AS loser ON players.player_id = loser.loser_id WHERE rankings.tours = 'Grand Slam' AND rankings.ranking_points > 8000 AND winner.winner_ioc = 'ESP' AND loser.loser_ioc = 'ESP';
+SELECT winner_name FROM matches WHERE year = 2023 LIMIT 1;
+SELECT first_name, last_name FROM players WHERE country_code = 'MGL' AND ranking <= 500 ORDER BY ranking LIMIT 1;
+SELECT players.first_name, players.last_name FROM players INNER JOIN matches ON players.player_id = matches.winner_id WHERE matches.winner_ioc = 'MGL' ORDER BY matches.draw_size DESC LIMIT 1;
+SELECT Sorry, but your question seems to be incomplete or not clearly stated. Could you please provide a clear query request or the information you need from the given tables?
+SELECT winner_name FROM matches WHERE winner_id IN (SELECT player_id FROM rankings WHERE ranking_points > 10000) LIMIT 1;
+SELECT country_code FROM players WHERE player_id IN (SELECT winner_id FROM matches WHERE surface = 'Clay') INTERSECT SELECT country_code FROM players WHERE player_id IN (SELECT loser_id FROM matches WHERE surface = 'Clay');
+SELECT country_code FROM players WHERE player_id IN (SELECT winner_id FROM matches WHERE surface = 'Clay') INTERSECT SELECT country_code FROM players WHERE player_id IN (SELECT winner_id FROM matches WHERE surface = 'Grass');
