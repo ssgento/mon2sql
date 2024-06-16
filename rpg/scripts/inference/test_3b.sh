@@ -1,0 +1,32 @@
+python text2sql_graphix.py \
+    --batch_size 8 \
+    --device 0 \
+    --seed 42 \
+    --save_path '/workspace/model/private/xrj/rpg/rpg-base-resdsql-t53b/checkpoint-101626' \
+    --mode "eval" \
+    --dev_filepath "./graphix/data_all_in/data/resdsql_dev_natsql.json" \
+    --original_dev_filepath "./data/spider/dev.json" \
+    --db_path '/workspace/dataset/private/MSpider/spider/database' \
+    --num_beams 8 \
+    --num_return_sequences 8 \
+    --target_type "natsql" \
+    --output './test/pred.sql'\
+    --graphix_dataset "./graphix/data_all_in/data/output/seq2seq_dev_dataset.json" \
+    --graphix_graph_pedia "./graphix/data_all_in/data/output/graph_pedia_total.bin"
+
+    python -u evaluate_text2sql_ckpts.py \
+    --batch_size 2 \
+    --device "0" \
+    --seed 42 \
+    --save_path "/workspace/model/private/xrj/rpg/rpg-base-resdsql-t53b-192" \
+    --eval_results_path "/workspace/model/private/xrj/rpg/eval_result/rpg-base-resdsql-t53b-192" \
+    --mode eval \
+    --dev_filepath "./graphix/data_all_in/data/resdsql_dev_natsql.json" \
+    --original_dev_filepath "./data/spider/dev.json" \
+    --db_path "/workspace/dataset/private/MSpider/spider/database" \
+    --tables_for_natsql "./data/preprocessed_data/tables_for_natsql.json" \
+    --num_beams 8 \
+    --num_return_sequences 8 \
+    --target_type "natsql"\
+    --graphix_dataset "./graphix/data_all_in/data/output/seq2seq_dev_dataset.json" \
+    --graphix_graph_pedia "./graphix/data_all_in/data/output/graph_pedia_total.bin"
