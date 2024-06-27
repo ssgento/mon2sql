@@ -6,10 +6,6 @@
 ### Details of dataset segmentation
 Segmentation of the dataset according to CSpider segmentation
 
-以下是你提供的数据写成 Markdown 表格的形式：
-
-markdown
-复制代码
 
 | Dataset    | Train set | Dev set | Test set | Total |
 |------------|-----------|---------|----------|-------|
@@ -18,9 +14,11 @@ markdown
 
 
 ## RPG+CEE
-![img.png](rpgcee.png)
-Figure 1 illustrates the structure of the RPG+CEE
+![fig2](rpgcee.png)
+Figure 2 illustrates the structure of the RPG+CEE
 We have uploaded the original code and are currently further organizing it
+
+Table 1 Results on MSpider-T
 
 | Model                          | Dev EM          | Dev EX          | Test EM         | Test EX         |
 |--------------------------------|-----------------|-----------------|-----------------|-----------------|
@@ -32,6 +30,8 @@ We have uploaded the original code and are currently further organizing it
 | RESDSQL+CEE-mT5-Large          | 46.43 (+1.99)   | 58.49 (-0.1)    | 30.84 (+1.62)   | 57.55 (+2.15)   |
 | RPG-mT5-Large                  | 44.33 (-0.11)   | 58.70 (+0.11)   | 29.40 (+0.18)   | 55.71 (+0.31)   |
 | RPG+CEE-mT5-Large              | 49.58 (+5.14)   | 61.84 (+3.25)   | 31.42 (+2.20)   | 58.02 (+2.62)   |
+
+Table 2:Results on Spider-R
 
 | Model                          | Dev EM          | Dev EX          | Test EM         | Test EX         |
 |--------------------------------|-----------------|-----------------|-----------------|-----------------|
