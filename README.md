@@ -9,7 +9,7 @@ Segmentation of the dataset according to CSpider segmentation
 
 | Dataset    | Train set | Dev set | Test set | Total |
 |------------|-----------|---------|----------|-------|
-| MSpider-T  | 6831      | 954     | 1906     | 9691  |
+| MSpider-T  | 6831      | 954     | 1908     | 9693  |
 | Spider-R   | 6831      | 954     | 1908     | 9693  |
 
 
